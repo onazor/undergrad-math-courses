@@ -1,0 +1,310 @@
+This lecture is all about the first part of Abstract Algebra. Here, the lecture notes contain topics about group theory, rings, and fields. It also includes such properties of different structures. Here is the preamble I use for my lecture notes.
+
+```
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGE IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, physics, esdiff, multicol, dsfont, titlesec, accanthis}
+
+\geometry{tmargin=1in, bmargin=1in, lmargin=1.5in, rmargin = 1.5in}
+\usepackage{tgpagella,eulervm}
+
+% for chapters, sections, and subsections
+\titleformat*{\section}{\normalfont\Huge\bfseries\accanthis}
+\titleformat*{\subsection}{\normalfont\LARGE\bfseries\accanthis}
+\titleformat*{\subsubsection}{\normalfont\Large\bfseries\accanthis}
+
+% for setting the header and footer of your document
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{} % clears existing headers and footers
+\setlength{\headheight}{14.49998pt}
+\rhead{Math 110.1 - Abstract Algebra I}
+\rfoot{Page \textbf{\thepage} of \textbf{\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{1pt} % removes the line rule at the top of page
+\renewcommand{\footrulewidth}{1pt}
+
+% for character encoding and font styles used
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\everymath{\displaystyle}
+\allowdisplaybreaks
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\A}{\mathscr{A}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+%colon equation
+\usepackage{mathtools}
+\newcommand{\defeq}{\coloneqq}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+
+%other set notations
+\usepackage{mathrsfs}
+
+%spacing
+\usepackage{parskip}
+\setlength{\parskip}{1em}
+\renewcommand{\arraystretch}{1.5}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,  %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
+
+\title{\textbf{Math 110.1 Lecture Notes}}
+\author{Jhon Christian N. Rozano \\
+    University of the Philippines Diliman \\
+    \small{jnrozano@up.edu.ph}}
+\date{December 20, 2022}
+
+%Environment for Lists and Itemization%
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
+%--------------------------------------------------------------------------------
+
+%box for solutions and examples
+\usepackage[many]{tcolorbox}
+\usepackage{lipsum}
+
+\usepackage{changepage}
+\newenvironment{myspace}{\begin{adjustwidth}{1cm}{}}{\end{adjustwidth}}
+
+\makeatletter
+
+\makeatletter
+
+\def\renewtheorem#1{
+    \expandafter\let\csname#1\endcsname\relax
+    \expandafter\let\csname c@#1\endcsname\relax
+    \gdef\renewtheorem@envname{#1}
+    \renewtheorem@secpar
+}
+\def\renewtheorem@secpar{\@ifnextchar[{\renewtheorem@numberedlike}{\renewtheorem@nonumberedlike}}
+\def\renewtheorem@numberedlike[#1]#2{\newtheorem{\renewtheorem@envname}[#1]{#2}}
+\def\renewtheorem@nonumberedlike#1{
+    \def\renewtheorem@caption{#1}
+    \edef\renewtheorem@nowithin{\noexpand\newtheorem{\renewtheorem@envname}{\renewtheorem@caption}}
+    \renewtheorem@thirdpar
+}
+\def\renewtheorem@thirdpar{\@ifnextchar[{\renewtheorem@within}{\renewtheorem@nowithin}}
+\def\renewtheorem@within[#1]{\renewtheorem@nowithin[#1]}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%
+% New environments %
+%%%%%%%%%%%%%%%%%%%%
+
+\makeatother
+
+\tcbuselibrary{skins}
+\newtheoremstyle{theorem}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}~\thmnumber{\textup{#2}}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\newtheoremstyle{definition}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}~\thmnumber{\textup{#2}}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\newtheoremstyle{example}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\newtheoremstyle{axiom}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem Environments %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{postulate}{Postulate}[subsection]
+\newtheorem{conjecture}{Conjecture}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{axiom}{Axiom}
+
+\tcolorboxenvironment{theorem}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}{black}, arc=.5mm
+}
+\tcolorboxenvironment{postulate}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+\tcolorboxenvironment{corollary}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+\tcolorboxenvironment{lemma}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0,
+    boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+\tcolorboxenvironment{axiom}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0,
+    boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition Environments %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[subsection]
+
+\tcolorboxenvironment{definition}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm,  colback=white, opacityback=0,
+    boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Example Environments %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheoremstyle{exercise}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}~\thmnumber{\textup{#2}}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\newtheoremstyle{remark}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}~\thmnumber{\textup{#2}}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\theoremstyle{exercise}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}[subsection]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[subsection]
+
+\tcolorboxenvironment{example}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm,  colback=white, opacityback=0,
+    boxrule=0pt, frame hidden, 
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+\tcolorboxenvironment{exercise}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm,  colback=white, opacityback=0,
+    boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+\tcolorboxenvironment{remark}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm,  colback=white, opacityback=0,
+    boxrule=0pt, frame hidden, arc=.5mm
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Property Environments %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{proposition}{Proposition}
+
+\tcolorboxenvironment{proposition}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm,  colback=white, opacityback=0,
+    boxrule=0pt, frame hidden,
+    borderline west={0.5mm}{0mm}, arc=.5mm
+}
+
+%%%%%%%%%
+% Proof %
+%%%%%%%%%
+
+\let\qedsymbolMyOriginal\qedsymbol
+\renewcommand{\qedsymbol}{
+    \color{black}\qedsymbolMyOriginal
+}
+
+\newtheoremstyle{proof}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}.}
+    \thmnote{\normalfont\color{black}~(\textit{#3})}}
+
+\theoremstyle{proof}
+\renewtheorem{proof}{Proof}
+
+\tcolorboxenvironment{proof}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=7mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden, arc=.5mm
+}
+
+%%%%%%%%%%%%
+% Solution %
+%%%%%%%%%%%%
+
+
+\newtheoremstyle{solution}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\sffamily\bfseries\thmname{#1}.}
+    \thmnote{\normalfont\color{black}~(\textit{#3})}}
+
+\theoremstyle{solution}
+\renewtheorem{solution}{Solution}
+
+\tcolorboxenvironment{solution}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=7mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden, arc=.5mm
+}
+
+%%%%%%%%%
+% Recall %
+%%%%%%%%%
+
+\newtheoremstyle{recall}
+{0pt}{0pt}{\normalfont}{0pt}
+{}{\;}{0.25em}
+{{\bfseries\thmname{#1}~\thmnumber{\textup{#2}}.}
+\thmnote{\normalfont\color{black}~(#3)}}
+
+\theoremstyle{recall}
+\newtheorem{recall}{Recall}
+
+\tcolorboxenvironment{recall}{
+    enhanced jigsaw, pad at break*=1mm, breakable,
+    left=4mm, right=4mm, top=1mm, bottom=1mm, colback=white, opacityback=0, boxrule=0pt, frame hidden, borderline west={0.5mm}{0mm}, arc=.5mm
+}
+```
