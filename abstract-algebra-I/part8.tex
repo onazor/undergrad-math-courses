@@ -1,0 +1,175 @@
+\section{Second Half Semester}
+\subsection{Friday, November 4: Normal Subgroups and Factor Groups}
+\subsubsection{Normal Subgroups}
+
+\begin{definition}
+    Let $G$ be a group. A subgroup $N$ of $G$ is said to be \textbf{normal} (or \textbf{invariant}) subgroup of $G$, denoted by $N \unlhd G$, if $gN = Ng, \forall g \in G$.
+\end{definition}
+
+\begin{remark} \phantom{blank} \\
+    \begin{enumerate}
+        \item The condition $gN = Ng$ in the definition does not mean that $gn = ng, \forall n \in N$, rather, $\forall n \in N, gn = n'g$, for some $n' \in N$.
+        \item if $\qty[G:H] = 2$, then $H \unlhd G$.
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Let $G$ be a group, $H \leq G$, and $g \in G, h \in H$.
+    \begin{enumerate}
+        \item The element $ghg^{-1}$ is called the \textbf{conjugate of $h$ by $g$}.
+        \item The set $gHg^{-1}$ is called the $\textbf{conjugate of $H$ by g}$
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    It can be shown that $gHg^{-1} \leq G$ and $H \cong gHg^{-1}$
+\end{remark}
+
+\begin{theorem}
+    Let $G$ be a group and $N \leq G$. The following are equivalent:
+    \begin{enumerate}
+        \item $gN = Ng, \forall g \in G$
+        \item $gNg^{-1} = N, \forall g \in G$
+        \item $gNg^{-1} \subseteq N, \forall g \in G$
+    \end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+    Let $H, K \unlhd G$. Show that $H \cap K \unlhd G$.
+\end{exercise}
+
+\begin{solution}
+    Let $G$ be a group and $H, K$ are normal subgroups of $G$. Then $H \leq G$ and $K \leq G$. Hence $H \cap K \leq G$. Let $n \in H \cap K, g \in G$. So,
+    \begin{align*}
+        & \Rightarrow n \in H \land  n \in K \\
+        & gng^{-1} \in H \land gng^{-1} \in K \\
+        & gng^{-1} \in H \cap K
+    \end{align*}
+    Therefore, $H \land K \subseteq G$. \qedsymbol
+\end{solution}
+
+\begin{exercise}
+    Is $\langle \qty(134) \rangle$ a normal subgroup of $A_4$?
+\end{exercise}
+
+\begin{solution}
+    Note that $A_4$ is the set of all even permutations in $S_4$ and 
+    \begin{equation*}
+        \begin{split}
+            A_4 = \{(1), (12)(34), &(13)(24), (14)(23), (123)(132),  \\
+            &(124), (142), (134), (143), (234), (243) \}
+        \end{split}
+    \end{equation*}
+    We see that $\langle (134) \rangle = \qty{(1), (134), (143)} \leq A_4$. Hence,
+    \begin{align*}
+        (12)(34) \langle (134) \rangle &= \qty{(12)(34), (142), (132)} \\
+        &\neq \qty{(12)(34), (123), (124)} \\
+        &= \langle (134) \rangle (12)(34) \rangle
+    \end{align*}
+    So $\langle \qty(134) \rangle$ is not a subgroup of $A_4$. \qedsymbol
+\end{solution}
+
+\begin{exercise}
+    Let $K, N \leq G$. If $N \unlhd G$, show that $K \cap N \unlhd K$
+\end{exercise}
+
+\begin{proof}
+    Since $N$ and $K$ are subgroups of $G$, $K \cap N \leq G$. In particular, since $K \cap N \subseteq K$, and $K$ is also a group, $K \cap N \leq K$. Let $g \in K$ and $x \in K \cap N$. Then $x \in K$ and $x \in N$. We have $gxg^{-1} \in N (N \unlhd G)$. Note that $gxg^{-1} \in K$. Therefore, $gxg^{-1} \in K \cap N$, so $K \cap N \unlhd K$. \qedsymbol
+\end{proof}
+
+\begin{exercise}
+    Let $H, K \unlhd G$. Define the set $HK = \qty{hk \mid h \in H, k \in K}$. Show that $HK \unlhd G$.
+\end{exercise}
+
+\begin{proof}
+    We show first that $HK \leq G$ using 2-step subgroup test. Since $H, K \leq G, \forall h \in H, \forall k \in K, hk \in G$, so $HK \subseteq G$. Since $H, K \leq G, e_G = e_G \cdot e_G = e_H \cdot e_K \in HK \neq \varnothing$. \\
+    
+    Let $h_1k_1, h_2k_2 \in HK$. Then
+    \begin{align*}
+        (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1} \\
+        &= h_1k'h_2^{-1} \hspace{1em} (\text{where } k_1k_2^{-1} = k' \exists k' \in K) \\
+        &= h_1h_2^{-1}k'' \hspace{1em} (K \unlhd G, \exists k'' \in K, h_2^{-1} \in H \leq G)
+    \end{align*}
+     
+    Hence, $HK \leq G$. To show the normal subgroup, let $g \in G, hk \in HK (h \in H, k \in K)$. Then
+    \begin{align*}
+        g(hk)g^{-1} &= (gh)e_G(kg^{-1})=(gh)(g^{-1}g)(kg^{-1}) = (ghg^{-1})(gkg^{-1})
+    \end{align*}
+    Therefore, $HK \unlhd G$.\qedsymbol
+\end{proof}
+
+\begin{theorem}
+    Let $G$ be a group and $N \unlhd G$. Denote the set of all left cosets $\qty{gN \mid g \in G}$ by $G / N$ (read as $G$ modulo $N$) and define $\ast$ on $G / N$ by
+    \[ (g_1N) \ast (g_2N) = (g_1g_2)N, \]
+    $\forall g_1N, g_2N \in G / N$. Then $\langle G / N, \ast \rangle$ is a group
+\end{theorem}
+
+\textbf{Note:} You need first to establish normal subgroup before proving factor group.
+
+\begin{definition}[Factor Group]
+    Let $G$ be a group and $N \unlhd G$. The group $G / N$ is called the \textbf{quotient group} or \textbf{factor group of $G$ modulo $N$}. 
+\end{definition}
+
+\begin{theorem}
+    Let $G$ be a group and $H \leq G$.
+    \begin{enumerate}
+        \item If $G$ is abelian, then so is $G / H$.
+        \item If $G$ is cyclic, then so is $G / H$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+    It was shown that $\qty{1, -1}$ is a normal subgroup of $Q_8$. To which known group is $Q_8/ \qty{1, -1}$ isomorphic to?
+\end{exercise}
+
+\begin{solution}
+    Note that $\qty|Q_8 / \qty{1, -1}| = \frac{8}{2} = 4$. Let $N = \qty{1, -1}$. Moreover, $Q_8/\qty{1, -1} = \qty{N, iN, jN, kN}$ since $iN = \qty{i, -i}, jN = \qty{j, -j}, kN = \qty{k, -k}$. So
+    
+    \vspace{1em}
+    
+    \begin{center}
+        \begin{tabular}{c | c c c c}
+             $\cdot$ &  $N$ & $iN$ & $jN$ & $kN$ \\
+             \hline
+             $N$ &  $N$ & $iN$ & $jN$ & $kN$ \\
+             $iN$ &  $iN$ & $N$ & $kN$ & $jN$ \\
+             $jN$ &  $jN$ & $kN$ & $N$ & $iN$ \\
+             $kN$ &  $kN$ & $jN$ & $iN$ & $N$ \\
+        \end{tabular}
+    \end{center}
+    So $Q_8 / \qty{1, -1} \cong V_4$. \qedsymbol
+\end{solution}
+
+\begin{exercise}
+    Let $H$ be a normal subgroup of $G$ and $K$ a subgroup of $G$ that contains $H$.
+    \begin{enumerate}[(a)]
+        \item Verify: $H \unlhd K$.
+        \item Show that $K$ is a normal in $G$ if and only if $K / H$ is normal in $G/ H$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+
+    \begin{enumerate}[(a)]
+        \item Verify that $H \unlhd K$. \\
+        Let $h \in H, k \in K$. Show that $khk^{-1} \in H$. Note that $k^{-1} \in K \leq G$. Since $ H \unlhd G$, $khk^{-1} \in H$.
+        \item Show that $K$ is normal in $G$ iff $K/H$ is normal in $G/H$.\\
+        $\qty(\Rightarrow)$ Suppose $K \unlhd G$. Show that $K/H \leq G/H$. $K/H = \qty{kH \mid k \in K}$. 
+        \begin{itemize}
+            \item Observe that since $K \unlhd G, K/H \subseteq G/H$. Moreover, $e_kH = H \in K/H \land H \in G/H$ \hspace{1em} ($H$ is identity element of $G / H$).
+            \item Let $k_1H, k_2H \in K/H$, where $k_1, k_2 \in K \unlhd G$.
+            \[ (k_1H) \ast (k_2H)^{-1} = k_1H \ast k_2^{-1} H = (k_1k_2^{-1})H \in K/H \]
+        \end{itemize}
+        Therefore, $K/H \leq G/H$.
+        
+        Let $gH \in G/H, kH \in K/H$, where $g \in G, k \in K$.
+        \begin{align*}
+            (gH) \ast (kH) \ast (gH)^{-1} &= (gH) \ast (kH) \ast ( g^{-1}H) \\
+            &= gkg^{-1} H \in K/H
+        \end{align*}
+        
+        $\qty(\Leftarrow)$ Suppose $K/H \unlhd G/H$. Show $K \unlhd G$. Note that $K \leq G$. Let $k \in K, g \in G$. Show that $gkg^{-1} \in K$.
+        \[ (gkg^{-1}) H = (gH) \ast (kH) \ast (gH)^{-1} \in K/H \unlhd G/H \]
+        Therefore, $gkg^{-1} \in K$, so $K \unlhd G$. \qedsymbol
+    \end{enumerate}
+\end{solution}

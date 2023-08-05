@@ -1,0 +1,287 @@
+\subsection{Friday, September 23: Isomorphic Binary Structures and Subgroups}
+\subsubsection{Isomorphic Binary Structures}
+
+\begin{definition}[Bijective Functions]
+    Let $f: X \to Y$. We say that
+    \begin{enumerate}
+        \item $f$ is \textbf{one-to-one} (or is an \textbf{injection}) iff $\qty(\forall x_1, x_2 \in X)\qty(f(x_1) = f(x_2) \Rightarrow x_1 = x_2)$. Notation: $f: X \stackrel{1-1}{\to} Y$
+        \item $f$ is \textbf{onto} $Y$ (or is a \textbf{surjection}) iff $\qty{f(x) \mid x \in X} = \text{Ran} f = Y$, that is, $\qty(\forall y \in Y) \qty(\exists x \in X) \qty(f(x) = y)$. Notation: $f : \stackrel{\text{onto}}{\to} Y$
+        \item $f$ is \textbf{bijection} iff $f$ is one-to-one and onto $Y$, that is, $\qty(\forall y \in Y) \qty(\exists! x \in X) \qty(f(x) = y)$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Isomorphism]
+    Let $\langle S,  \ast \rangle$ and $\langle  S', \ast' \rangle$  be binary algebraic structures. A function $\phi : S \to S'$ is an \textbf{isomorphism} of $S$ \textbf{with} $S'$ if 
+    \begin{enumerate}
+        \item $\phi$ is bijective and 
+        \item $\forall x, y \in S, \phi(x \ast y) = \phi (x) \ast' \phi (y)$. This is the homomorphism property
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    The concept of isomorphism introduces the relation of being isomorphic on a collection $S$ of binary structures. This relation is an equivalence relation, that is,
+    \begin{enumerate}
+        \item $\forall U \in S, U \cong U$
+        \item $\forall U, V \in S$ if $U \cong V$, then $V \cong U$
+        \item $\forall U, V, W \in S$, if $U \cong V$ and $V \cong W$, then $U \cong W$
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}[Automorphism]
+    An isomorphism of a group with itself is an automorphism of the group.
+\end{definition}
+
+\begin{remark}
+    The set of all automorphisms of a group $G$, denoted by Aut$(G)$, forms a group under function composition.
+\end{remark}
+
+Note that if an isomorphism $\phi$ exists, we say that $S$ and $S'$ are isomorphic binary structures $\qty(S \cong S')$.
+
+\begin{theorem}[Isomorphism]
+    Suppose $\phi$ is an isomorphism of a group $\langle G, \ast \rangle$ with $\langle G', \ast' \rangle$. Then,
+    \begin{enumerate}
+        \item $\phi (e_G) = e_{G'}$ where $e_G$ is the identity element of $G$ and $e_{G'}$ is the identity element of $G'$
+        \item $\phi \qty(g^{-1}) = \qty[\phi \qty(g)]^{-1}$, $\forall g \in G $
+        \item If $G$ is abelian, then so is $G'$
+    \end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+    Let $\langle G, \ast \rangle$ be a group and $c$ be a fixed element of $G$. Show that $\iota : G \to G$ given by $\iota_c (g) = c \ast g \ast c^{-1}$ is an automorphism of $G$ ($\iota_c$ is called the inner automorphism of $G$ induced by $c$)
+\end{exercise}
+
+\begin{solution}
+    Show that $\iota_c$ is bijective. \\
+    First, we show that the function is one-to-one. Let $g_1, g_2 \in G \land $ suppose $\iota_c (g_1) = \iota_c \qty(g_2)$. Then 
+    \begin{align*}
+        c \ast g_1 \ast c^{-1} &= c  * g_2 \ast c^{-1} \\
+        g_1 &= g_2 \hspace{2em} \text{ LCL and RCL}
+    \end{align*}
+    Then, we show that it is onto. Let $g' \in G$. Then,
+    \begin{align*}
+        \iota_c \qty(c^{-1} \ast g' \ast c) &=  c \ast \qty(c^{-1} \ast g' \ast c) \ast c^{-1} \\
+        &= \qty(c \ast c^{-1}) \ast g' \ast \qty(c \ast c^{-1}) \\
+        &= g'
+    \end{align*}
+    We show the homomorphism property. Let $g_1, g_2 \in G$.
+    \begin{align*}
+        \iota_c \qty(g_1 \ast g_2) &= c \ast \qty(g_1 \ast g_2) \ast c^{-1} \\
+        &= c \ast \qty(g_1 \ast e \ast g_2) \ast c^{-1} \\
+        &= c \ast \qty(g_1 \ast \qty( c^{-1} \ast c) \ast g_2 ) \ast c^{-1} \\
+        &= \qty(c \ast g_1 \ast c^{-1}) \ast \qty(c \ast g_2 \ast c^{-1}) \\
+        &= \iota_c \qty(g_1) \ast \iota_c \qty(g_2)
+    \end{align*}
+    Therefore, $\iota$ is an automorphism.
+\end{solution}
+
+\begin{exercise}
+    Show that the conjugation mapping $\phi : \C^* \to \C^*$ where $\phi \qty(z) = \bar{z}$ is an automorphism of $\C^*$ (for $z \in \C^*, \bar{z} = a -bi$, where $z = a + bi$)
+\end{exercise}
+
+\begin{solution}
+    Let $x = a +bi, y = c + di \in \C^*$. We show the homomorphism property.
+    \[ \phi \qty(x \cdot y) = \phi \qty(ac -bd + \qty(bc + ad)i) = \qty(ac - bd) - \qty(bc + ad)i \]
+    and
+    \begin{align*}
+        \phi(x) \cdot \phi(y) = \qty(a - bi) \cdot \qty(c - di) &= \qty(ac - bd) + \qty(-bc - ad)i \\
+        &=\qty(ac - bd) - \qty(bc + ad)i
+    \end{align*}
+    Next, we show that $\phi$ is both one-to-one and onto. For one-to-one, suppose $\phi \qty(a + bi) = \phi \qty(c + di)$. Then,
+    \[ a - bi = c - di \Rightarrow a = c \land b = d\]
+    Therefore,
+    \[ a + bi = c + di \]
+    To show onto, let $a + bi \in \C^*$ ($a, b \in R$ not both zero). Then,
+    \[ \phi \qty(a - bi) = a - \qty(-b) i = a + bi \]
+\end{solution}
+
+
+\begin{exercise}
+    Let $S = \R \backslash \qty{-1}$
+    \begin{enumerate}
+        \item Verify that $\ast$ defined by $a \ast b = a + b + ab, \forall a, b \in S$ is a binary operation
+        \item Show that $\langle S, \ast \rangle$ is an abelian group
+        \item Prove that $S \cong \R^*$
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{enumerate}
+        \item Closure: Let $a, b \in S$. Note that $a \ast b = a + b + ab \in \R$ We will show that $a \ast b \neq - 1$. Suppose, by contradiction, that $a \ast b = a + b + ab = -1$. Then,
+        \begin{align*}
+            a + b + ab &= -1 \\
+            a + b\qty(1 + a) &= -1 \\
+            b \qty(1 + a) &= - \qty(1 + a) \\
+            b &= -1
+        \end{align*}
+        This is a contradiction since $b \neq -1$. Therefore, $a \ast b \neq -1$. So $a \ast b \in \R/ \qty{-1} = S$. 
+        
+        Well-defined: Let $a, b, c, d \in S$. Suppose $a = c \land b = d$. Then, 
+        \[ a \ast b = a + b + ab = c + d + cd = c \ast d\]
+        \item $\ast$ is commutative. Let $a, b \in S = \R \backslash \qty{-1}$.
+        \[ a \ast b = a + b + ab = b + a + ba = b \ast a \] 
+        
+        \begin{myspace}
+            \begin{enumerate}[label=\textbf{(G\arabic*)}]
+                \item $\ast$ is associative: Let $a, b, c \in S$.
+                \begin{align*}
+                    \qty(a \ast b) \ast c  &= \qty(a + b + ab) \ast c \\
+                    &= \qty(a + b + ab) + c + \qty(a + b + ab)c  \\
+                    &= a + b + ab + c + ac + bc + abc \\
+                    a \ast \qty(b \ast c) &= a \ast \qty(b + c + bc) \\
+                    &= a + \qty(b + c + bc) + a \qty(b + c + bc) \\
+                    &= a + b + c + bc + ab + ac + abc \\
+                    &=  a + b + ab + c + ac + bc + abc
+                \end{align*}
+                 \item Pre-proof: Find $e$ such that $a \ast e = a, \forall a \in S$.
+                \[ a = a \ast e = a + e + ae = a + \qty(1 + a)e \Rightarrow e = 0\]
+                $0 \in S = \R \backslash \qty{-1}, \forall a \in S$.
+                \[ 0 \ast a = a \ast 0 = a + 0 + 0 = a \]
+                So, we take $e = 0$.
+                \item Inverse: Pre-proof:  Let $a \in S$. Find $b$ such that 
+                \[ 0 = a \ast b = a + b + ab = b \qty(1 + a) + a \Rightarrow \frac{-a}{1 + a} = b \]
+                Proof. $\forall a \in S$
+                \begin{align*}
+                    \frac{-a}{1 + a} \ast a = a \ast \frac{-a}{1 + a} &= a + \frac{-a}{1 + a} + \frac{a \qty(-a)}{1 + a} \\
+                    &= \frac{a \qty(1 + a) - a - a^2}{1 + a} \\
+                    &= \frac{a + a^2 - a - a^2}{1 + a} = 0
+                \end{align*}
+
+                Show that $\frac{-a}{1+a} \in S = \R \backslash \qty{-1}$. 
+                \[ \frac{-a}{1+a} \in \R \hspace{1em} \qty(-a \in S, 1 + a \neq 0) \]
+                We show $\frac{-a}{1 + a} \neq -1$. By contradiction, suppose $\frac{-a}{1+a} = -1$. Then
+                \begin{align*}
+                    \frac{-a}{1+a} &= -1 \\
+                    -a &= - \qty(1 + a) \\
+                    -a &= -1 - a \\
+                    0 &\neq -1 \text{ (a contradiction)}
+                \end{align*}
+            \end{enumerate}
+        \end{myspace}
+        \item If $\phi : \R^* \to S$ is an isomorphism, then $\phi \qty(1) = 0$ ($e_s = 0 \land e_{\R^*} = 1$). We define $\phi : \R^* \to S$ which has a map $x \mapsto x - 1$. \\
+        $\phi (x) = x -1 \neq -1$ since $x \neq 0$. So $\phi (x) \in S$. $\phi$ is well-defined for $x = y \in \R^*$, $\phi (x) = x - 1 = y - 1 = \phi(y)$. \\
+        
+        We show that $\phi$ is one-to-one: $\forall x, y \in \R^*$, suppose $\phi (x) = \phi (y)$. Then, $x - 1 = y - 1 \Leftrightarrow x = y$. \\
+        
+        We show that $\phi$ is onto: Let $y \in S = \R \backslash \qty{-1}$. Then,
+        \[ \phi(\underbrace{y + 1}_{\in \R^*}) = y + 1 - 1 = y \]
+        To show homomorphism property, let $x, y \in \R^*$. Then
+        \[ \phi(xy) = xy -1\]
+        and 
+        \begin{align*}
+            \phi(x) \ast \phi(y) &= \qty(x - 1) \ast \qty(y - 1) = x - 1 + y - 1 + \qty(x - 1) \qty(y - 1) \\
+            &= x + y - 2 + xy - x - y + 1 = xy - 1 = \phi(xy)
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Show: $\langle 2\Z, + \rangle \ncong \langle 2\Z, \cdot \rangle$
+\end{exercise}
+
+\begin{proof}
+    Note that $\langle 2\Z, + \rangle$ is an abelian group while $\langle 2\Z, \cdot \rangle$ is only a semigroup. Thus, $\langle 2\Z, \cdot \rangle$ does not have an identity element while $\langle 2\Z, + \rangle$ has. Therefore, $\langle 2\Z, + \rangle$. \qedsymbol
+\end{proof}
+
+\subsubsection{Subgroup}
+
+A goal of  (finite) group theory is to enumerate all finite groups of order $n$ (up to isomorphism). Note that there is only group (up to isomorphism) of orders 1, 2, and 3. On the other hand, there are two groups (up to isomorphism) of order four.
+
+\begin{definition}
+    Let $\langle G, \ast \rangle$ be a group and $\varnothing \neq H \subseteq G$. If $\langle H, \ast \rangle$ is also a group, we say that $H$ is a subgroup of $G$. Notation: $H \leq G$. 
+\end{definition}
+
+\begin{theorem}[3-step Subgroup Test]
+    Let $G$ be a group and $H \subseteq G$. Then $H \leq G$ iff
+    \begin{enumerate}
+        \item $e \in H$ ($e$ identity element of $G$)
+        \item $\forall h_1, h_2 \in H, h_1h_2 \in H$
+        \item $\forall h \in H, h^{-1} \in H$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[2-step Subgroup Test]
+    Let $G$ be a group and $H \subseteq G$. Then $H \leq G$ iff
+    \begin{enumerate}
+        \item $H \neq \varnothing$, and 
+        \item $\forall a, b \in H, ab^{-1} \in H$
+    \end{enumerate}
+\end{theorem}
+
+
+\begin{exercise}
+    Suppose $G = \qty{e, y, u, v, w, x, y, z}$ is the group defined by the table below.
+    
+    \hspace{1em}
+    
+    \begin{center}
+        \begin{tabular}{c | c c c c c c c c}
+             $\ast$ & $e$ & $t$ & $u$ & $v$ & $w$ & $x$ & $y$ & $z$ \\ 
+             \hline
+             $e$ & $e$ & $t$ & $u$ & $v$ & $w$ & $x$ & $y$ & $z$ \\
+             $t$ & $t$ & $e$ & $v$ & $u$ & $y$ & $z$ & $w$ & $x$ \\
+             $u$ & $u$ & $v$ & $e$ & $t$ & $z$ & $y$ & $x$ & $w$ \\
+             $u$ & $v$ & $u$ & $t$ & $e$ & $x$ & $w$ & $z$ & $y$ \\
+             $w$ & $w$ & $y$ & $x$ & $t$ & $z$ & $v$ & $e$ & $u$ \\
+             $x$ & $x$ & $z$ & $w$ & $y$ & $u$ & $e$ & $v$ & $t$ \\
+             $y$ & $y$ & $w$ & $z$ & $x$ & $e$ & $u$ & $t$ & $v$ \\
+             $z$ & $z$ & $x$ & $y$ & $w$ & $v$ & $t$ & $u$ & $e$
+        \end{tabular}
+    \end{center}
+    \hspace{1em}
+    
+    Is $G$ an abelian group? Compute $C(a) = \qty{g \in G \mid ag = ga}$ (centralizer of $a$ in $G$), for every $a \in G$ and use this to find $Z(G) = \bigcap_{a \in G} C(a)$ (center of $G$).
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be an abelian group with identity $e$. Show that the following are subgroups of $G$.
+    \begin{enumerate}[(a)]
+        \item $H_1 = \qty{x^2 \mid x \in G}$
+        \item $H_2 = \qty{x \in G \mid x^3 = e}$
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    Using 3-step subgroup test.
+    \begin{itemize}
+        \item Let $e$ be the identity element of $G$. Then $e = e^2 \in H_1$ 
+        \item Let $x^2, y^2 \in H_1$ where $x, y \in G$. Then,
+        \[ x^2y^2 = (xy)^2 \hspace{1em} (H_1 \subseteq G \text{ is abelian}) \]
+        Since $xy \in G$ ($G$ is a group), $x^2y^2 \in H_1$.
+        \item Let $x^2 \in H_1$. Since $x \in G, x^{-1} \in G$ ($G$ is a group). Note that  $(x^2)^{-1} = \qty(x^{-1})^2 \in H_1 $. 
+    \end{itemize}
+    Therefore, $H_1 \leq G$. \qedsymbol
+\end{proof}
+
+
+\begin{exercise}
+    Suppose $\phi$ is an isomorphism of a group $\langle G, \ast \rangle$ with $\langle G', \ast' \rangle$.
+    \begin{enumerate}
+        \item Show that if $G$ is abelian, then so is $G'$
+        \item Suppose $H \leq G$. Show that $\phi (H) = \qty{\phi (h) \mid h \in H} \leq G'$
+    \end{enumerate}
+\end{exercise}
+ 
+\begin{solution} \phantom{blank}
+    \begin{enumerate}[(a)]
+        \item  Let $x', y' \in G'$. Show $x' \ast y' = y' \ast x'$. Since $\phi$ is onto, $\exists x, y \in G$ such that $\phi(x) = x' \land \phi(y) = y'$
+        \begin{align*}
+            x' \ast' y' &= \phi(x) \ast' \phi(y) \\
+            &= \phi(x \ast y) \hspace{1em} (\phi \text{ is isomorphism})\\
+            &= \phi(y \ast x) \hspace{1em} (G \text{ is abelian}) \\
+            &= \phi(y) \ast' \phi(x) \hspace{1em} (\phi \text{ is isomorphism}) \\
+            &= y' \ast x'
+        \end{align*}
+        \item Note that $\phi \subseteq G'$. Using 2-step subgroup test, 
+            \begin{itemize}
+                \item Let $e'$  be the identity element of $G'$. We know that $\phi(e) = e'$, where $e$ is the identity element of $G$. Since $H \leq G, e \in H$. Hence, $e' = \phi(e) \in \phi(H)$
+                \item Let $\phi(x), \phi(y) \in \phi(H)$ with $x, y \in H \leq G$. We show that $\phi(x) \ast' \qty(\phi(y))^{-1} \in \phi(H)$
+                \begin{align*}
+                    \phi(x) \ast' (\phi(y))^{-1} &= \phi(x) \ast' \phi(y^{-1}) \\
+                    &= \phi(x \ast y^{-1}) \hspace{1em} (\phi \text{ is an isomorphism  })
+                \end{align*}
+                Therefore, $\phi(x \ast y^{-1}) \in \phi(H)$
+            \end{itemize}
+    \end{enumerate}
+\end{solution}
+
+

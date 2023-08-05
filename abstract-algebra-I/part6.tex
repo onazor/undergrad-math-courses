@@ -1,0 +1,256 @@
+\subsection{Friday, October 14: Group of Permutations, Orbits, Cycles and the Alternating Groups}
+
+\subsubsection{Group of Permutations}
+
+\begin{definition}
+    Let $A$ be a nonempty set. A \textbf{permutation} of the set $A$ is a bijection from $A$ to $A$.
+\end{definition}
+
+\begin{remark} \phantom{blank} \\
+    \begin{enumerate}
+        \item Let $\qty|A| = n$. There are $n!$ permutations of the set $A$.
+        \item If $\sigma$ and $\tau$ arre permutations of $A$, then $\sigma \circ \tau$ is also a permutation of $A$.
+        \item It is known that composition of functions is associative.
+        \item The identity map $i : A \to A$ such that $i(x) = x, \forall x \in A$ is a permutation.
+        \item  If $\sigma$ is a permutation of $A$, then $\sigma^{-1}$ is also a perrmutation of $A$.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Let $A$ be a nonempty set. Then the set $S_A$ of all permutations of $A$ is a group under composition.
+\end{theorem}
+
+\begin{remark} \phantom{blank} \\
+    \begin{enumerate}
+        \item Consider the group $\langle S_A, \circ  \rangle$ and let $\sigma, \tau \in S_A$. We will use notatiion $\sigma \tau$ for $\sigma \circ \tau$.
+        \item The action of $\sigma \tau$ on $A$ is read in right-to-left order, that is, first apply $\tau$ and then $\sigma$. Therefore, we have $\qty(\sigma  \tau) \qty(a) = \qty(\sigma \qty(\tau \qty(a)))$.
+        \item If sets $A$ and $B$ have the same cardinality, then $S_A \cong S_B$.
+    \end{enumerate}
+\end{remark}
+
+\begin{exercise}
+    Show that if sets $A$ and $B$ have the same cardinality, then $S_A \cong S_B$.
+\end{exercise}
+
+\begin{proof}
+    Since $\qty|A| = \qty|B|$, there should exist a function from $A$ to $B$ where the function is bijective. In other words, $\exists f : A \to B$. 
+    
+    \begin{align*}
+        \phi : S_A &\to S_B \\ 
+        \sigma &\mapsto f \circ \sigma \circ f^{-1}
+    \end{align*}
+    
+    Note that $f \circ \sigma \circ f^{-1} : B \to B$ and $f, f^{-1}, \sigma$ are bijective maps. It is known that composition of bijective maps gives a bijective map. so $f \circ \sigma \circ f^{-1} \in S_B$.
+    
+    We will show that the function is one-to-one. Let $\sigma_1, \sigma_2 \in S_A$ and suppose $\phi(\sigma_1) = \phi(\sigma_2)$. We have
+    \begin{align*}
+        f \circ \sigma_1 \circ f^{-1} &= f \circ \sigma_2 \circ f^{-1} \\
+        f^{-1} \qty(f \circ \sigma_1 \circ f^{-1}) \circ f &= f^{-1} \qty(f \circ \sigma_2 \circ f^{-1}) \circ f \\
+        \qty(f^{-1} \circ f) \circ \sigma_1 \circ \qty(f^{-1} \circ f) &= \qty(f^{-1} \circ f) \circ \sigma_2 \circ \qty(f^{-1} \circ f) \\
+         \text{id}_A \circ \sigma \circ \text{id}_A &= \text{id}_A \circ \sigma_2 \circ \text{id}_A \\
+         \sigma_1 &= \sigma_2 
+    \end{align*}
+    
+    We show that the function is onto. Let $\sigma' \in S_B$. Then $f^{-1} \circ \sigma' \circ f \in S_A$. Observe that
+    \begin{align*}
+        \phi(f^{-1} \circ \sigma' \circ f) &= f \circ \qty(f^{-1} \circ \sigma' \circ f) \circ f^{-1} \\
+        &= \qty(f \circ f^{-1}) \circ \sigma' \circ \qty(f \circ f^{-1})  \\
+        &= \text{id}_B \circ \sigma' \circ \text{id}_B \\
+        &= \sigma' 
+    \end{align*}
+    
+    To show the homomorphism property, we let $\sigma_1, \sigma_2 \in S_A$.
+    \begin{align*}
+        \phi \qty(\sigma_1 \circ \sigma_2) &= f \circ \qty(\sigma_1 \circ \sigma_2) \circ f^{-1} \\
+        &= f \circ \qty(\sigma_1 \circ \text{id}_A \circ \sigma_2) \circ f^{-1} \\
+        &= f \circ \qty(\sigma_1 \circ \qty(f^{-1} \circ f) \circ \sigma_2) \circ f \\
+        &= \qty(f \circ \sigma_1 \circ f^{-1}) \circ \qty(f \circ \sigma_2 \circ f^{-1}) \\
+        &= \phi(\sigma_1) \circ \phi (\sigma_2)
+    \end{align*}
+    Therefore $S_A \cong S_B$. \qedsymbol
+\end{proof}
+
+
+\begin{definition}
+    Let $A = \qty{1, 2, \ldots, n}$. The group of all permutations of $A$ is called the \textbf{symmetric group of $n$ letters and is denoted by $S_n$}.
+\end{definition}
+
+\begin{exercise}
+    Let $\alpha = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 5 & 9 & 8 & 6 & 3 & 4 & 2 & 1 & 7), \beta = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 8 & 2 & 1 & 7 & 6 & 5 & 9 & 3 & 4) \in S_9$. Find $\alpha\beta$. 
+\end{exercise}
+
+\begin{solution}
+    \[ \alpha \beta = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 1 & 9 & 5 & 2 & 4 & 3 & 7 & 8 & 6 ) \text{ and } \beta \alpha  = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 6 & 4 & 3 & 5 & 1 & 7 & 2 & 8 & 9  ) \]
+\end{solution}
+
+\begin{definition}
+    Let $A$ be a nonempty set. A \textbf{permutation group of $A$} is a set of permutations of $A$ that forms a group under composition. A permutation group of $A$ is a subgroup of $S_A$.
+\end{definition}
+
+\begin{theorem}[Cayley's Theorem]
+    Every group is isomorphic to a group of permutations.
+\end{theorem}
+
+\begin{exercise}
+    Let $n \in \Z^+$ and $G \leq S_n$. If $i \in \qty{1, 2, \ldots, n}$, the \textbf{stabilizer in G is}
+    \[ \text{stab}_G\qty(i) = \qty{a \in G \mid a \qty(i) = i} \]
+    Show that $\text{stab}_G \qty(i) \leq G$
+\end{exercise}
+
+\begin{proof} We will use the 2-step subgroup test.
+    \begin{itemize}
+        \item     By definition of subgroup, the identity map $\text{id } \in G \leq S_n$ fixes $i$. In other words, $\text{id } \qty(i) = i \, \forall i$. Therefore, $\text{id } \in \text{ stab}_G$ 
+        \item Let $\alpha \beta \in \text{ stab}_G \qty(i)$. Note that $\beta \qty(i) = i$ and $\beta$ is bijective, so $\beta^{-1} \qty(i) = i$. We have
+        \[
+            \qty(\alpha \beta^{-1}) \qty(i) = \alpha \qty(\beta^{-1} \qty(i)) = \alpha \qty(i) = i
+        \]
+        Therefore, $\alpha \beta^{-1} \in \text{ stab}_G (i)$.
+    \end{itemize}
+    Thus, $\text{stab}_G \qty(i) \leq G$. \qedsymbol
+\end{proof}
+
+\begin{theorem}
+    Let $\sigma \in S_n$. Then the relation $\sim$ on $A = \qty{1, 2, \ldots, n}$ defined by $x \sim y$ if and only if $y = \sigma^k \qty(x)$ for some $k \in \Z$ is an equivalence relation on $A$.
+\end{theorem}
+
+\subsubsection{Orbits}
+
+\begin{definition}
+    Let $\sigma \in S_n, A = \qty{1, 2, \ldots, n}$ and $a \in A$. The \textbf{orbit of $\sigma$ containing $a$ is} $\qty{\sigma^k \qty(a) \mid k \in \Z}$.
+\end{definition}
+
+\begin{definition}
+    A permutation $\sigma \in S_n$ is a \textbf{cycle} if it has at most one orbit containing more than one element. The \textbf{length} of a cycle is the number of elements in its largest orbit. 
+\end{definition}
+
+\begin{remark}
+    If $\sigma \in S_n$ is a cyckle, consider the largest orbit $\qty{a, \sigma (a), \sigma^2 (a), \ldots, \sigma^{k  - 1} (a)}$. We write the permutation $\sigma$ as
+    \[ (a \, \sigma \qty(a) \, \sigma^2 \qty(a) \, \ldots \sigma^{k - 1} \qty(a)) \text{ or }  (a, \sigma \qty(a), \sigma^2 \qty(a), \ldots, \sigma^{k - 1} \qty(a))\]
+    where $\sigma^k \qty(a) = a$ (a cycle of length $k$ or $k$-cycle).
+\end{remark}
+
+\begin{remark}
+    Strictly speaking, cycle notation is ambiguous since for example, $\qty(3 \, 6 \, 1)$ might denote a permutation in $S_6$, in $S_7$, or in any $S_n, n \geq 6$. In context, however, this won't cause any problem because it will always be made clear which $S_n$ is under discussion.
+\end{remark}
+
+\subsubsection{Cycles and Alternating Groups}
+
+\begin{definition}[Disjoint Cycles]
+    Two cycles are said to be \textbf{disjoint} if they have no number in common, that is, if $\sigma = \qty(a_1 \, a_2 \, \ldots a_k)$, $\tau = \qty(b_1 \, b_2 \, \ldots \, b_1) \in S_n$ we have $a_i \neq b_j$ for all $i$ and $j$.
+\end{definition}
+
+\begin{theorem}
+    The product of disjoint cycles commute.
+\end{theorem}
+
+\begin{remark}
+    Every permutation $\sigma \in S_n$ can be written as a cycle or as a product of disjoint cycles.
+\end{remark}
+
+\begin{theorem}
+    Let $\sigma \in S_n$ be written as a product of disjoint cycles. Then the order of $\sigma$ is the least common multiple of the lengths of its cycles.
+\end{theorem}
+
+\begin{exercise}
+    Let $\alpha = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 5 & 9 & 8 & 6 & 3 & 4 & 2 & 1 & 7)$, $\beta = \mqty(1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 8 & 2 & 1 & 7 & 6 & 5 & 9 & 3 & 4) \in S_9$. Write $\alpha$ and $\beta$ in cycle notation. Find $\beta \alpha \beta^{-1}$ and $\qty|\beta \alpha \beta^{-1}|$.
+\end{exercise}
+
+\begin{solution}
+    We have $\alpha = (1538)(297)(46)$ and $\beta = (183)(479)(56)$. Note that $\beta^{-1} = (381)(974)(56)$. Therefore
+    \[ \beta \alpha \beta^{-1} = (1386)(249)(57) \]
+    and 
+    \[ \qty|\beta \alpha \beta^{-1}| = \text{LCM} (4, 3, 2) = 12 \]
+\end{solution}
+
+
+\begin{remark}
+    If $\sigma$ is an $m$-cycle, then $\qty|\sigma| = m$
+\end{remark}
+
+\begin{definition}
+    A cycle of length 2 is called a transposition.
+\end{definition}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item A transposition leaves all elements but two fixed, and maps each of these onto the other.
+        \item Let $n \geq 2$. Every permutation in $S_n$ is a product of transpositions. This implies that any rearrangement of $n$ objects can be achieved by successively interchanging of them.
+        \item If $\tau_1, \tau_2, \ldots, \tau_m$ are transpositions, then 
+        \[ \qty(\tau_1 \tau_2 \cdots \tau_n)^{-1} =  \]
+        \item If $\sigma \in S_n$ and $n \geq 2$, then
+        \[ \sigma = \tau_1 \tau_2 \cdot \tau_m  \]
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    No permutation in $S_n$ can be expressed as a product of an even number of transpositions and as a product of an odd number of transpositions.
+\end{theorem}
+
+\begin{definition}
+    A permutation of finite set is \textbf{even (odd)} if it is a product of even (odd) number of transpositions.
+\end{definition}
+
+\begin{exercise}
+    Let $b = \qty(123)\qty(145)$. Write $b^{49}$ in cycle form. Is $b^{49}$ an even permutation?
+\end{exercise}
+
+\begin{solution}
+    Note that $b = (123)(145) = (14523)$. This implies that $\qty|b| = 5$. Then,
+    \[ (b^5)^9 \cdot b^4 = b^4 = b^{-1} = (32541)   \]
+    $b^{49} = b^{-1}$ is an odd length. Therefore, $b^{49}$ is an even permutation. That is, $b^{-1} = (32)(25)(54)(41)$ that has even number of transpositions.
+\end{solution}
+
+\begin{exercise}
+    If $\alpha$ and $\beta$ are distinct transpositions, what are the possibilities for $\qty|\alpha \beta|$?
+\end{exercise}
+
+\begin{solution} \phantom{blank} \\
+    \begin{myspace}
+        \begin{enumerate}[label=\textbf{Case \arabic*:}]
+            \item If $\alpha = \qty(ab), \beta = \qty(cd), a, b, c, d$ are distinct and $\alpha \beta = \qty(ab) \qty(cd)$. So $\qty|\alpha \beta| = \text{lcm}(2, 2) = 2$
+            \item If $\alpha = \qty(ab), \beta = \qty(bc), a, b, c$ are distinct and $\alpha \beta = (ab)(bc) = (bca)$. So $\qty|\alpha \beta| = 3$.
+        \end{enumerate}
+    \end{myspace}
+\end{solution}
+
+\begin{exercise}
+    Give a cyclic subgroup of $A_8$ order 4 and a noncyclic subgroup of $A_8$ of order 4. 
+\end{exercise}
+
+\begin{solution}
+    Let $\alpha = (1234)(78) = (12)(23)(34)(78) \in A_8$. Note that $\langle \alpha \rangle = \qty{(1), \qty(1234)(78), (13)(24), (4321)(87)}$. \\
+    
+    Next we need to find non-cyclic. So this is isomorphic to Klein-4. This is given by $\qty{(1), (12)(34), (56)(78), (12)(34)(56)(78)}$.
+\end{solution}
+
+\begin{exercise}
+    Find three permutations $\sigma$ in $S_9$ such that $\sigma^3 = (157)(283)(469)$.
+\end{exercise}
+
+\begin{solution}
+    Note that $\qty|\sigma^3| = \text{lcm}(3,3,3) = 3$. This implies that $\qty(\sigma^3)^3 = \sigma^9 = (1)$. From a theorem in the last discussion, we have $\qty|\sigma| \mid 9 \Rightarrow \qty|\sigma| = 1, 3, 9$. Since $\sigma^3 \neq \qty(1), \qty|\sigma| \neq 1, 3$, we have $\qty|\sigma| = 9$. We have
+        \begin{align*}
+            \sigma &= \qty(124586739) \\
+            \sigma &= \qty(142568793) \\
+            \sigma &= \qty(139524786)
+        \end{align*}
+\end{solution}
+
+\begin{remark} \phantom{blank} 
+    \begin{enumerate}
+        \item (1) (identity permutation) is even (we define it to be even for $n = 1$) 
+        \item A cycle of odd length is even and a cycle of even length is odd
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Let $n \geq 2$. Then the number of even permutations in $S_n$ is the same as the number of odd permutations in $S_n$.
+\end{theorem}
+
+\begin{definition}
+    The set $A_n$ of all even permutations in $S_n$ is called the \textbf{alternating group of $n$ letters}. Also, $\qty|A_n| = \frac{n!}{2}$
+\end{definition}
+
+\begin{theorem}
+    $A_n \leq S_n$
+\end{theorem}

@@ -1,0 +1,148 @@
+\subsection{Friday, November 18: Rings: Definition and Basic Properties}
+
+\begin{definition}[Ring]
+    A \textbf{ring} $\langle R, +, \cdot \rangle$ is a nonempty set $R$ together with two binary operations addition $(+)$ and multiplication $(\cdot)$, such that the following axioms are satisfied
+    
+        \begin{enumerate}[label=\textbf{(R\arabic*)}]
+           \item $\langle R, + \rangle$ is an abelian group
+            \item Multiplication is associative
+            \item For all $a, b, c \in R$, the \textbf{left distributive law}, $a \cdot \qty(b + c) = (a \cdot b) + (a \cdot c)$ and the \textbf{right distributive law}, $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$ hold
+        \end{enumerate}
+\end{definition}
+
+\begin{remark} Let $\langle R, +, \cdot \rangle$ be a ring.
+    \begin{enumerate}
+        \item If the binary operation $+$ and $\cdot$ are clear from context, we simply denote the ring  $\langle R, +, \cdot \rangle$ by $R$
+        \item We denote by $0_R$ the additive identity (zero element) of $R$. The additive inverse of $a \in R$ is $- a$
+        \item We write $a - b$ for $a + (-b)$ 
+        \item Multiplication in $R$ is usually by juxtaposition, that is, we write $ab$ for $a \cdot b$. Multiplication is assumed to be performed before addition in the absence of parenthesis
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem} Let $R$ be a ring with additive identity $0_R$, and $a, b, c \in R$. Then
+
+    \begin{enumerate}
+        \item $a \cdot 0_R = 0_R = 0_R \cdot a$
+        \item $a \cdot (-b) = (-a) \cdot b = - (a \cdot b)$
+        \item $(-a) \cdot (-b) = a \cdot b$
+        \item $a \cdot (b - c) = a \cdot b - a \cdot c$ and $(a - b) \cdot c = a \cdot c - b \cdot c$
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition} Let $R$ be a ring
+    \begin{enumerate}
+        \item If multiplication in $R$ is commutative, then $R$ is said to be a \textbf{commutative ring}
+        \item If $R$ contains an element $1_R$ such that $\forall a \in R, 1_R \cdot a = a = 1_R \cdot a$, then we call $1_R$ the \textbf{multiplicative identity} or \textbf{unity} of $R$. If $R$ has a multiplicative identity, then $R$ is said to be a \textbf{ring with unity}
+        \item If $R$ is a ring with unity $1_R$, an element $a \in R$ is called a \textbf{unit} if it has a \textbf{multiplicative inverse}, that is, $\exists b \in R$ such that $a \cdot b = 1_R = b \cdot a$. We denote the element $b$ by $a^{-1}$
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    The units of a ring $R$ with unity, denoted by $U(R)$, form a group under multiplication
+\end{theorem}
+
+\begin{definition}[Direct Product]
+    Let $R_1, R_2, \ldots, R_n$ be rings and 
+    \[ R = \prod_{i=1}^{n} R_i = \qty{\qty(r_1, r_2, \ldots, r_n) \mid r_i \in R, 1 \leq i \leq n}, \]
+    addition $+$ and multiplication $\cdot$
+    \begin{align*}
+        \qty(r_1, r_2, \ldots, r_n) + \qty(s_1, s_2, \ldots, s_n) &= \qty(r_1 + s_1, r_2 + s_2, \ldots, r_n + s_n) \\
+        \qty(r_1, r_2, \ldots, r_n) \cdot \qty(s_1, s_2, \ldots, s_n) &= \qty(r_1 \cdot s_1, r_2 \cdot s_2, \ldots, r_n \cdot s_n)
+    \end{align*}
+    $\qty(r_1, r_2, \ldots, r_n), \qty(s_1, s_2, \ldots, s_n) \in \prod_{i = 1}^{n} R_i$. Then $\langle R, +, \cdot \rangle$ is a ring called \textbf{direct product of $R_1, R_2, \ldots, R_n$}. Observe that $R$ is commutative or has unity if and only if each of $R_i, 1 \leq i \leq n$ is commutative or has unity
+\end{definition}
+
+\begin{remark}
+    Let $R$ be a ring with additive identity $0_R$. \begin{enumerate}
+        \item Let $a, b, c \in R$. If $a \neq 0_R$ and $ab = ac$, then it does not imply that $b = c$
+        \item If $R$ is a ring with unity $1_R$, then for each $a \in R, (-1_R) \cdot a = -a = 1_R \qty(-a)$
+        \item Suppose $R$ is a ring with unity. Then the unity is unique. Moreover, if $a \in R$ is a unit, then $a^{-1}$ is also unique
+        \item If $R \neq \qty{0_R}$ and $R$ is a ring with unity $1_R$, then $1_R \neq 0_R$
+    \end{enumerate}
+\end{remark}
+
+\begin{exercise}
+    Determine whether the indicated operations on the set give a
+    ring structure. If a ring is not formed, tell why this is the case.
+    If a ring is formed, determine whether the ring is commutative
+    and whether it has a unity.
+    
+    \begin{enumerate}
+        \item $R = \qty{a + b\sqrt[3]{3} \mid a, b \in \Q}$ under the usual addition and multiplication
+        \item $\Z^+$ under the usual addition and multiplication
+        \item $2\Z \times \Z$ under the addition and multiplication by components
+        \item $\Z \times \Q \times \Z$ under addition and multiplication by components
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank} \\
+    \begin{enumerate} 
+        \item Let $a_1 + b_1 \sqrt[3]{3}$, $a_2 + b_2 \sqrt[3]{3} \in R$ where $a_1, a_2, b_1, b_2 \in \Q$. We have
+        \begin{align*}
+            \qty(a_1 + b_1 \sqrt[3]{3}) \qty(a_2 + b_2 \sqrt[3]{3}) &= a_1a_2 + a_1 b_2\sqrt[3]{3} + b_1 a_2 \sqrt[3]{3} + b_1b_2\sqrt[3]{3^2} \\
+            &= a_1a_2 + \qty(a_1b_2 + b_1 a_2 + b_1b_2\sqrt[3]{3})\sqrt[3]{3}
+        \end{align*}
+        Note that $a_1a_2 \in \Q$ but $a_1b_2 + b_1a_2 + b_1b_2 \sqrt[3]{3} \notin \Q \text{ where }  b_1 \neq b_2 \neq 0$. Therefore, $R$ is not a ring.
+        
+        \item $\langle \Z^+, + \rangle$ is not an abelian group since it does not have the additive identity. That is,  $0 \notin \Z^+$. Therefore, $\langle \Z^+, + \rangle$ is not a ring.
+        
+        \item Note that $\langle 2\Z, +, \cdot \rangle$ is a commutative ring and $\langle \Z, +, \cdot \rangle$ is a commutative ring with unity. Therefore, $\langle 2\Z \times \Z, +, \cdot \rangle$ is a commutative ring.
+        
+        \item Note that $\langle \Z, +, \cdot \rangle$, $\langle \Q, +, \cdot \rangle$ are commutative ring with unity. Therefore, $\langle \Z \times \Q \times \Z, +, \cdot\rangle$ is also a commutative ring with unity. The unity is given by $1_{\Z \times \Q \times \Z} = (1, 1, 1) \in \Z \times \Q \times \Z$.
+    \end{enumerate}
+
+\end{solution}
+
+\begin{definition}[Subring]
+    Let $S \neq \varnothing$ be a subset of a ring $R$. Then $S$ is said to be a \textbf{subring} of $R$ if $S$ is also a ring under the same binary operations in $R \, (S \leq R)$ 
+\end{definition}
+
+\begin{theorem}[Subring Test]
+    Let $R$ be a ring and $\varnothing \neq S \subseteq R$. If $\forall a, b \in S, a - b \in S$ and $ab \in S$, then $S$ is a subring of $R$
+\end{theorem}
+
+\begin{exercise}
+    Show that $S = \qty{\mqty[0 & 0 \\ a & b] \mid a, b \in \R} \leq M_{2 \times 2} \qty(\R)$
+\end{exercise}
+
+\begin{proof}
+    Note that $S \subseteq M_{2 \times 2} (\R)$ and $\mqty[0 & 0 \\ 0 & 0] \in S \neq \varnothing$ where $a = b = 0 \in \R$. \\
+    
+    Let $\mqty[0 & 0 \\ a_1 & b_1], \mqty[0 & 0 \\ a_2 & b_2] \in S, a_1, a_2, b_1, b_2 \in \R$. Then we have,
+    
+    \begin{align*}
+        \mqty[0 & 0 \\ a_1 & b_1] - \mqty[0 & 0 \\ a_2 & b_2] &= \mqty[0 & 0 \\ a_1 - a_2 & b_1 - b_2] \in S \hspace{1em} (\text{where } a_1 - a_2, b_1 - b_2 \in R) \\
+         \mqty[0 & 0 \\ a_1 & b_1] \mqty[0 & 0 \\ a_2 & b_2] &= \mqty[0 & 0 \\ b_1a_2 & b_1b_2] \in S \hspace{1em} (\text{where } b_1a_2, b_1b_2 \in R)
+    \end{align*}
+\end{proof}
+
+
+\begin{exercise}
+    Prove: Let $R$ be a ring and $S_1, S_2 \leq R$. Then $S_1 \cap S_2 \leq R$
+\end{exercise}
+
+\begin{proof}
+    Since $S_1, S_2 \leq R, S_1 \cap S_2 \subseteq R$. Note that $0_R \in S_1$ and $0_R \in S_2$. Therefore, $0_R \in S_1 \cap S_2 \neq \varnothing$. \\
+    
+    Let $a, b \in S_1 \cap S_2$. Then $a, b \in S_1$ and $a, b \in S_2$. We have,
+    
+    \begin{align*}
+        a - b \in S_1 \leq R &\land a - b \in S_2 \leq R \\
+        ab \in S_1 \leq R &\land ab \in S_2 \leq R
+    \end{align*}
+    
+    Therefore, $a - b \in S_1 \cap S_2$ and $ab \in S_1 \cap S_2$. Hence, $S_1 \cap S_2 \leq R$. \qedsymbol
+\end{proof}
+
+\begin{exercise}
+    Prove: Let $R$ be a ring. The \textbf{center} of $R$ is the set $S = \qty{a \in R \mid ax = xa, \forall x \in R} \leq R$
+\end{exercise}
+
+\begin{proof}
+    Note that $\forall x \in R, 0_R \cdot x = 0_R = x \cdot 0_R$. So $0_R \in S \neq \varnothing$. Moreover, $S \subseteq R$. \\
+    
+    Let $a_1, a_2 \in S, x \in R$. Then, \[ \qty(a_1 - a_2)x = a_1 x - a_2 x = x a_1 - x a_2 = x(a_1 - a_2) \]
+    Hence, $a_1 - a_2 \in S$. Moreover, 
+    \[ (a_1a_2)x = a_1(a_2x) = a_1(xa_2) = (a_1x)a_2 = (xa_1)a_2 = x(a_1a_2)  \]
+    Hence, $a_1a_2 \in S$. Therefore, the set $S = \qty{a \in R \mid ax = xa, \forall x \in R} \leq R$. \qedsymbol
+\end{proof}

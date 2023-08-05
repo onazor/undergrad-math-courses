@@ -1,0 +1,174 @@
+\subsection{Friday, November 11: Homomorphism of Groups}
+
+\begin{definition}[Homomorphism]
+    A \textbf{homomorphism} $\phi$ from a group $\langle G, \cdot \rangle$ to a group $\langle G', \cdot' \rangle$ is a function $\phi : G \to G'$ that peserves the group operations, that is $\forall a, b \in G$, 
+    \[ \phi \qty(a \cdot b) = \phi \qty(a) \cdot' \phi \qty(b) \]
+    If $G=G'$, then the homomorphism $\phi$ is an \textbf{endomorphism}. A homomorphism $\phi$ is called an \textbf{epimorphism} if $\phi$ is onto and a \textbf{monomorphism} if $\phi$ is one-to-one. If $\phi$ is an epimorphism, $G'$ is called a \textbf{homomorphic image of $G$}. A bijective homomorphism is an \textbf{isomorphism}.
+\end{definition}
+
+\begin{theorem}[Properties of Homomorphism]
+    Let $\phi: G\to G'$ be a homomorphism of groups.
+	\begin{enumerate}
+	    \item $\phi (e) = e'$ where $e$ is the identity element in $G$ and $e'$ is the identity element in $G'$
+	    \item $\qty(\phi \qty(g))^{-1} = \phi \qty(g^{-1}), \forall g \in G$
+	    \item  If $H \leq G$, then $\phi (H) \leq G'$. If $H' \leq G'$, then $\phi^{-1} \qty(H) \leq G$
+	    \item Let $H \leq G$. If $H$ is abelian, then $\phi \qty(H)$ is abelian. If $H$ is cyclic, then $\phi (H)$ is cyclic
+	    \item If $H \unlhd G$, then $\phi (H) \unlhd \phi (G)$. If $H' \unlhd G'$, then $\phi^{-1} \qty(H') \unlhd G$
+	    \item If $g \in G$ such that $\qty|g| = n < \infty$ then $\qty|\phi \qty(g)| \mid n$
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}[Kernel]
+    Let $\phi : G \to G'$ be a homomorphism of groups and $e'$ is the identiy element of $G'$. Then \textbf{kernel} of $\phi$, denoted by $\text{Ker} \phi$ is the set
+    \[ \text{Ker} \phi = \qty{g \in G \mid \phi (g) = e'} = \phi^{-1} \qty(\qty{e'})\]
+\end{definition}
+
+\begin{remark}
+    Let $\phi : G \to G'$ be a homomorphism of groups
+    \begin{enumerate}
+        \item $\text{Ker} \phi \unlhd G$
+        \item $\forall a, b \in G, \phi (a) = \phi  (b) \Leftrightarrow a\text{Ker} \phi = b \text{Ker} \phi$
+        \item Let $g \in G, g' \in G'$. If $\phi (g) = g'$, then 
+        \[ \phi^{-1} \qty(\qty{g'}) = \qty{x \in G \mid \phi (x) = g'} = g\text{Ker}\phi \]
+        \item If $\qty|\text{Ker} \phi| = n < \infty$, then $\phi$ is an $n-\text{to}-1$ mapping from $G$ onto $\phi(G)$.
+    \end{enumerate}
+\end{remark}
+
+\begin{exercise}
+    Let $\alpha : G \to G'$ and $\beta : G' \to G''$ be group homomorphisms. Show that the composition $\beta \circ \alpha : G \to G''$ is also a homomorphism.
+\end{exercise}
+
+\begin{proof}
+    Let $\alpha : G \to G'$ and $\beta : G' \to G''$ be group homomorphisms and let $x_1, x_2 \in G$. We have,
+    \begin{align*}
+        (\beta \circ \alpha) (x_1 \cdot x_2) &= \beta(\alpha(x_1 \cdot x_2)) \\
+        &= \beta(\alpha (x_1) \cdot' \alpha(x_2)) \\
+        &= \beta(\alpha(x_1)) \cdot'' \beta(\alpha(x_2)) \\
+        &= (\beta \circ \alpha)(x_1) \cdot'' (\beta \circ \alpha)(x_2)
+    \end{align*}
+    Therefore, the composition $\beta \circ \alpha : G \to G''$ is a homomorphism. \qedsymbol
+\end{proof}
+
+\begin{exercise}
+    Let $\phi : G \to G'$ be a homomorphism of groups. Show that if $H' \leq G'$, then $\phi^{-1} \qty(H') \leq G \hspace{2em} (\phi^{-1} (H') = \qty{g \in G \mid \phi(g) \in H'})$ 
+\end{exercise}
+
+\begin{proof} \phantom{blank} 
+    \begin{itemize} 
+        \item     Let $e$ be the identity element of $G$ and $e'$ be the identity element of $G'$. Since $\phi$ is a homomorphism,
+        \[ \phi(e) = e' \in H \leq G', e \in G \]
+        Hence, $e \in \phi^{-1}(H') \neq \varnothing$.
+        \item Let $g_1, g_2 \in \phi^{-1} (H')$. Therefore, $\phi(g_1), \phi(g_2) \in H'$. We need to show that $g_1 g_2^{-1} \in \phi^{-1} (H')$. Then
+        \begin{align*}
+            \phi(g_1 \cdot g_2^{-1}) &= \phi(g_1) \cdot' \phi(g_2^{-1}) \\
+            &= \phi(g_1) \cdot' \qty(\phi(g_2))^{-1} \in H' \leq G'
+        \end{align*}
+    \end{itemize}
+    Therefore $g_1 \cdot g_2^{-1} \in \phi^{-1}(H')$. \qedsymbol
+\end{proof}
+
+
+\begin{exercise}
+    Let $\phi: \Z_{50} \to \Z_{15}$ be a group homomorphism such that $\phi(7) = 6$. Compute $\phi(1), \text{Ker} \phi$, and $\phi(\Z_{50})$.
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{itemize}
+        \item   Note that 
+            \[ 6 = \phi(7) = \phi(1 +_{50} \, 1  +_{50} 1  +_{50} \, \ldots +_{50} \, 1 ) = \phi(1) +_{15} \, \phi(1) +_{15} \ldots +_{15} \, \phi(1) \]
+            Then, $7 \phi(1) = 6 \Rightarrow \phi(1) = 3$.
+        \item Note that the Kernel is given by $\text{Ker} \phi = \qty{g \in \Z_{50} \mid \phi(g) = 0}$. Let $g \in \text{Ker} \phi$. Moreover, note that $5\phi(1) = 0$. Therefore,
+        \[ \text{Ker} \phi = \qty{0, 5, 10, 15, 20, 25, 30, 35, 40,45} = \langle 5 \rangle \]
+        \item  We have
+        \begin{align*}
+            \phi(\Z_{50}) &= \qty{\phi(g) \mid g \in \Z_{50}} \\
+            &= \qty{0, 3, 6, 9, 12} \\
+            &= \langle 3 \rangle \cong \Z_5
+        \end{align*}
+    \end{itemize}
+\end{solution}
+
+\begin{exercise}
+    Show that the group $G$ is abelian if and only if the function $\alpha : G \to G$ such that $\alpha (g) = g^{-1}$ where $g \in G$ is a homomorphism.
+\end{exercise}
+
+\begin{proof} \phantom{blank} \\
+    ($\Rightarrow$) Suppose $G$ is abelian. Let $g_1, g_2 \in G$
+    \begin{align*}
+        \alpha(g_1g_2) &= (g_1 g_2)^{-1} \\
+        &= g_2^{-1} g_1^{-1}  \\
+        &= g_1^{-1} g_2^{-1} \\
+        &= \alpha(g_1)\alpha(g_2)
+    \end{align*}
+    Therefore, $\alpha$ is a homomorphism. \\
+    ($\Leftarrow$) Suppose $\alpha$ is a homomorphism. Let $a, b \in G$. We need to show that $ab = ba$.
+    \begin{align*}
+        ab = \qty[(ab)^{-1}]^{-1} &= \qty[\alpha(ab)]^{-1} \\
+        &= \alpha((ab)^{-1}) \\
+        &= \alpha(b^{-1}) \alpha(a^{-1}) \\
+        &= \qty(\alpha(b))^{-1} \qty(\alpha(a))^{-1} \\
+        &= \qty(b^{-1})^{-1} \qty(a^{-1})^{-1} \\
+        &= ba
+    \end{align*}
+    Since $G$ is a group with commutative opperation, $G$ is an abelian group. \qedsymbol
+\end{proof}
+
+\begin{theorem}
+    Let $\phi : G \to  G'$ be a homomorphism and $e$ is the identity element of $G$. Then $\phi$ is one-to-one if and only if $\text{Ker} \phi = \qty{e}$
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ be a group and $N \unlhd G$. Then $\delta : G \to G / N$ given by $\delta(g) = gN, \forall g \in G$, is a group epimorphism with Ker$\delta = N$. The mapping $\delta$ is called the \textbf{canonical} or \textbf{natural homomorphism} 
+\end{theorem}
+
+\begin{theorem}
+    Let $\phi : G \to G'$ be a homomorphism of groups with Ker$\phi = N$, and $\delta$ is the canonical homomorphism from $G \to G / N$. Then there exists a unique homomorphism $\mu : G / N \to G'$ such that $\phi = \mu \circ \delta$
+\end{theorem}
+
+\begin{theorem}[First Isomorphism Theorem]
+    Let $\phi : G \to G'$ be a homomorphism of groups. Then $G/\text{Ker}\phi \cong \phi(G)$. 
+\end{theorem}
+
+\begin{exercise}
+    Let $G = \langle a \rangle$ with $\qty|a| = 20$ and consider the group homomorphism $f : G \to G$ such that $f(g) = g^4$, for every $g \in G$
+    
+    \begin{enumerate}[(a)]
+        \item Find the elements of Ker$f$ and $f(G)$
+        \item Using FIT, to what known group is $G/\text{Ker}f$ and $f(G)$ both isomorphic to?
+        \item Give the elements of $G/\text{Ker}f$ and write its group table
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} 
+Note that $g = a^k, \, \exists k \in \Z$ since $G = \langle a \rangle$
+    \begin{enumerate}[(a)]
+        \item We have
+        \begin{align*}
+            \text{Ker}f &= \qty{g \in G \mid f(g) = e} \\
+            &= \qty{g \in G \mid g^4 =e} \\
+            &= \qty{a^k \in G \mid a^{4k} = \qty(a^k)^4 = e, \, \exists k \in \Z} \\
+            &= \qty{e, a^5, a^{10}, a^{15}} = \langle a^5 \rangle \cong \Z_4
+        \end{align*}
+        \item We have
+        \begin{align*}
+            f(G) = \qty{f(g) \mid g \in G} &= \qty{g^4 \mid g \in G} \\
+            &= \qty{(a^k)^4 \mid k \in \Z} \\
+            &= \qty{(a^4)^k \mid k \in \Z} \\
+            &= \qty{e, a^4, a^8, a^{12}, a^{16}}
+        \end{align*}
+        \item  By FIT, $G/\text{Ker}f \cong f(G) \cong \Z_5$
+        
+        \begin{center}
+            \begin{tabular}{c|c c c c c}
+                $\cdot$  & Ker$f$ & $a\text{Ker}f$ & $a^2\text{Ker}f$ & $a^3\text{Ker}f$ & $a^4\text{Ker}f$  \\
+                \hline 
+                Ker$f$ & Ker$f$ & $a\text{Ker}f$ & $a^2\text{Ker}f$ & $a^3\text{Ker}f$ & $a^4\text{Ker}f$ \\
+                $a\text{Ker}f$  & $a\text{Ker}f$ & $a^2\text{Ker}f$ & $a^3\text{Ker}f$ & $a^4\text{Ker}f$ & Ker$f$ \\
+                $a^2\text{Ker}f$  & $a^2\text{Ker}f$ & $a^3\text{Ker}f$ & $a^4\text{Ker}f$ & $\text{Ker}f$ & $a$Ker$f$ \\
+                $a^3\text{Ker}f$ & $a^3\text{Ker}f$ & $a^4\text{Ker}f$ & Ker$f$ & $a$Ker$f$ & $a^2\text{Ker}f$ \\
+                $a^4\text{Ker}f$  & $a^4\text{Ker}f$ & $\text{Ker}f$ & $a\text{Ker}f$ & $a^2\text{Ker}f$ & $a^3$Ker$f$ \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{enumerate}
+\end{solution}

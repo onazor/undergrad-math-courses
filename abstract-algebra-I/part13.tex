@@ -1,0 +1,85 @@
+\subsection{Friday, December 16: Prime and Maximal Ideals, and The Field of Quotients of an Integral Domain}
+
+\begin{theorem}
+    If $R$ is a ring with unity, and $I$ is an ideal of $R$ containing a unit, then $I = R$
+\end{theorem}
+
+\begin{corollary}
+    A field contains no proper nontrivial ideals
+\end{corollary}
+
+\begin{definition}[Maximal Ideal]
+    An ideal $M \neq R$ of a ring $R$ is said to be \textbf{maximal} if there is no proper ideal $I$ in $R$ with $M \subsetneq I$. That is, whenever $J$ is an ideal of $R$ such that $M \subseteq J \subseteq R$, then $J = M$ or $J = R$
+\end{definition}
+
+\begin{remark}
+    The only ideal that properly contains a maximal ideal is the entire ring
+\end{remark}
+
+\begin{theorem}
+    Let $R$  be a commutative ring with unity and $I \neq R$ an ideal of $R$. Then $R/I$ is a field if and only if $I$ is a maximal ideal of $R$.
+\end{theorem}
+
+\begin{corollary}
+    A commutative ring with unity is a field if and only if it has no proper nontrivial ideals.
+\end{corollary}
+
+\begin{definition}
+    Let $R$ be a commutative ring. An ideal $P \neq R$ of $R$ is said to be \textbf{prime} if $a, b \in R$ and $ab \in P$, then $a \in P$ or $b \in P$.
+\end{definition}
+
+\begin{theorem}
+    Let $R$ be a commutative ring with unity and $I \neq R$ an ideal of $R$. Then $R/I$ is an integral domain if and only if $I$ is a prime ideal of $R$.
+\end{theorem}
+
+\begin{corollary}
+    Every maximal ideal of a commutative ring with unity is a prime ideal.
+\end{corollary}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item The converse of Corollary 2.6.3 is not true, that is, a prime ideal of a commutative ring with unity need not be maximal.
+        \item In Corollary 2.6.3, ring $R$ must have unity.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Let $D$ be an integral domain. Then there exists a field $F$ that contains a subring isomorphic to $D$.
+\end{theorem}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item We call $F$ in Theorem 2.6.4 the \textbf{field of quotients} of $D$.
+        \item Let $\bar{D} = \qty{\qty[a, 1] \mid a \in D}$. Then $F$ is a field which $D$ is embedded. Note that 
+        \[ \qty[a, 1] \odot \qty[b, 1]^{-1} = \qty[a, 1] \odot \qty[1, b] = \qty[a, b] \]
+        We may therefore say that every element $\qty[a, b] \in F$ is the product of $\qty[a, 1] \in \bar{D}$ and the inverse of $\qty[b, 1] \in \bar{D}$. This product is called quotient of $\qty[a, 1]$ and $\qty[b, 1]$ and is denoted by $\frac{\qty[a, 1]}{ \qty[b, 1] }$. This explains why we choose to call $F$ the field of quotients. 
+        \item Thus, we can now say that any integral domain $D$ can be enlarged (or embedded in) to a field $F$ such that every element of $F$ can be expressed as a quotient of two elements of $D$.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Let $F$ be a field of quotients of an integral domain $D$. If $L$ is a field containing $D$, then $L$ contains a subfield $K$ such that $D \subseteq K \subseteq L$ with $K$ isomorphic to $F$.
+\end{theorem}
+
+\begin{theorem}
+    Let $R$ be a ring with unity $1_R$. The mapping $\phi : \Z \to R$ given by $\phi(n) = n \cdot 1_R$ is a ring homomorphism.
+\end{theorem}
+
+\begin{corollary} Let $R$ be a ring with unity.
+    \begin{enumerate}
+        \item If $R$ is of characteristic $n > 1$, then $R$ contains a subring isomorphic to $\Z_n$.
+        \item If $R$ is of characteristic 0, then $R$ contains a subring isomorphic to $\Z$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+    Let $F$ be a field and $p$ be prime.
+    \begin{enumerate}
+        \item If $F$ is of characteristic $p$, then $F$ contains a subfield isomorphic to $\Z_p$.
+        \item If $F$ is of characteristic $0$, then $F$ contains a subfield isomorphic to $\Q$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{definition}[Prime Field]
+    A field $F$ is called a \textbf{prime field} if it has no proper subfields.
+\end{definition}

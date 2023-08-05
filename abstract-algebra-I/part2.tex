@@ -1,0 +1,314 @@
+\subsection{Friday, September 16: Binary Operations and Groups}
+\subsubsection{Binary Operations}
+
+\begin{definition}[Function]
+    A \textbf{function} $f$ from set $A$ to set $B$ (denoted by $f : A \to B$) is a relation between $A$ and $B$ such that each $a \in A$ appears as the first member of exactly one ordered pair $(a, b) \in f$, that is, $f$ is a rule that assigns to each $a \in A$ exactly one $b \in B$. The element $a$ is called a \textbf{preimage} of $b$ under $f$, and $b$ is called the \textbf{image} of $a$ under $f$ or the value of the function $f$ at $a$ and is usually denoted by $f(a)$.
+\end{definition}
+
+\begin{remark}
+    Consider the function $f : A \to B$.
+    \begin{enumerate}
+        \item Then we have the following
+        \begin{enumerate}[(a)]
+            \item Dom $f$ = $A$ (domain of $f$)
+            \item If $x_1, x_2 \in A$ and $x_1 = x_2$, then $f(x_1) = f(x_2)$. In this case, $f$ is \textbf{well-defined}
+        \end{enumerate}
+        \item The set $B$ is called the codomain of $f$. The range of $f$ is the set $f(A) = \qty{f(a) \mid a \in A}$. If $B = A$, we say $f$ is a function on $A$
+    \end{enumerate}
+\end{remark}
+
+
+\begin{definition}[Binary Operation]
+    A \textbf{binary operation} $\ast$ on a nonempty set $S$ is a function
+    \begin{align*}
+        \ast : S \cross S &\to S \\
+        \qty(a, b) &\mapsto a \ast b
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    To verify that $\ast$ is a binary operation on $S \neq \varnothing$:
+    \begin{enumerate}
+        \item \textbf{closure property}: $\forall \qty(a, b) \in S \cross S, a \ast b \in S$.
+        \item \textbf{uniqueness of the assigned element in $S$}: $\forall \qty(a_1, b_1), \qty(a_2, b_2) \in S \cross S$, if $\qty(a_1, b_1) = \qty(a_2, b_2)$. then $a_1 \ast b_1 = a_2 \ast b_2$. This means that the operation $\ast$ is well-defined.
+    \end{enumerate}
+\end{remark}
+
+
+\begin{exercise}
+    Is $\ast$ defined by $a \ast b = ab - 1$ a binary operation on $\Z$? on $\Z^*$ 
+\end{exercise}  
+
+\begin{solution}  \phantom{blank}
+
+\begin{enumerate}
+    \item On $\Z$,
+        \begin{enumerate}[i.]
+            \item Let $a, b \in \Z$. Then $a \ast b = ab - 1 \in \Z$. Therefore, $\Z$ is closed under $\ast$.
+            \item Let $a, b, c, d \in \Z$. Suppose $a = c$ and $b = d$. Then, $a \ast b = ab - 1 = cd - 1 = c \ast d$. Hence, $\ast$ is well-defined.
+        \end{enumerate}
+        Therefore, $\ast$ is a binary operation on $\Z$. \qedsymbol
+    \item On $\Z^*$, 
+        \begin{enumerate}[i.]
+            \item Let $a = b = 1 \in \Z^*$
+            \[ a \ast b = 1 \ast 1 = 1 \cdot 1 - 1 = 0 \notin \Z^* \]
+        \end{enumerate}
+        Therefore, $\ast$ is not a binary operation on $\Z^*$. \qedsymbol
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+    Let $R = \qty{\qty(x, y) \in \Z^2 \mid \qty|x| = \qty|y|}$. Define the operation $\ast$ on $\Z/R = \qty{\qty[x]_R \mid x \in \Z}$ by 
+    \[ \qty[a] \ast \qty[b] = \qty[a + b] \]
+    where $\qty[a], \qty[b] \in \Z/R $. Show that $\ast$ is not well-defined.
+\end{exercise}
+
+\begin{proof}
+    Note that $\Z/R = \qty[a] = \qty{a, -a} = \qty[-a]$.
+    For instance, take $\qty[2] = \qty[-2]$ and $\qty[3] = \qty[3]$. Then,
+    \[ \qty[2] \ast \qty[3] = \qty[2 + 3] = \qty[5] \neq \qty[1]  =  \qty[-2 + 3] = \qty[-2] \ast \qty[3] \]
+    Therefore, $\ast$ is not well-defined. \qedsymbol
+\end{proof}
+
+\subsubsection{Groups}
+
+\begin{definition}[Algebraic Structure]
+    An \textbf{algebraic system} or \textbf{algebraic structure} is a nonempty set $S$ with one or more binary operations defined on $S$. \\
+    \textbf{Notation.} $\langle S, \ast \rangle$ (a (binary) algebraic structure)
+\end{definition} 
+
+\begin{definition}[Groups]
+    $\langle G, \ast \rangle$ is 
+    \begin{enumerate}
+        \item a \textbf{semigroup} if $\ast$ is associative, i.e., $\forall a, b, c \in G$, $a \ast \qty(b \ast c) = \qty(a \ast b) \ast c$.
+        \item a \textbf{monoid} if it is a semigroup and $\exists e \in G$ such that $\forall a \in G, a \ast e  = a = e \ast a$.
+        \item a \textbf{group} if it is a monoid and $\forall a \in G,  \exists a^{-1} \in G$ such that $a \ast a^{-1}  = e = a^{-1} \ast a$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item $a, b, c \in \langle G, \ast \rangle$, then $a \ast b \ast c$ makes sense by (G1)
+        \item e is the \textbf{identity element} for $\ast$ and $a^{-1}$ is the $\textbf{inverse}$ of $a$
+        \item A group $G$ is \textbf{abelian} if its binary operation $\ast$ is commutative
+        \item Order of a group $G: \qty|G|$
+    \end{enumerate}
+\end{remark} 
+
+\begin{exercise}
+    $\langle 2\Z, \cdot \rangle$  \text{Note:} $\qty(m\Z \mid m \in \Z)$
+\end{exercise}
+\begin{solution} \phantom{blank}
+    \begin{enumerate}[i.]
+        \item $2\Z \subseteq \Z$ and $\cdot$ is associative in $\Z$. Therefore, $\cdot$ is associative in $2\Z$. 
+        \item Note that 1 is an identity element in $\langle \Z, \cdot \rangle$, but $1 \notin 2\Z$.
+    \end{enumerate}
+    Thus, $2\Z \subseteq \Z$ is a semigroup. \\
+    
+    Let $m \in \Z$, consider $m\Z = \qty{mx \mid x \in \Z}$ under multiplication.
+    \begin{myspace}
+        \begin{enumerate}[label=\textbf{Case \arabic*:}]
+            \item $m \notin \qty{-1, 0, 1} \Rightarrow \langle m\Z, \cdot \rangle$ is a semigroup.
+            \item $m \in \qty{1, -1} \Rightarrow m\Z = Z: \langle \Z, \cdot \rangle$ is a monoid
+            \item $m = 0 \Rightarrow m\Z = \qty{0}$ under $\cdot$ is associative since  $0 \cdot 0 = 0$ which implies $e = 0 \in \qty{0}$. It also has an inverse since $0 \ast a^{-1} = e = 0 \Rightarrow a^{-1} = 0$. Moreover, $\cdot$ is commutative.  Thus, $\langle \qty{0}, \cdot \rangle$ is an $\textbf{abelian group}$.
+        \end{enumerate}
+    \end{myspace}
+\end{solution}
+
+\begin{exercise}
+    $\langle \Z, \ast \rangle$ where $\ast$ is defined by $a \ast b = a + b + 2, \forall a, b \in \Z$
+\end{exercise}
+
+\begin{solution} Let $a, b, c \in \Z$
+    \begin{myspace}
+        \begin{enumerate}[label=\textbf{(G\arabic*)}]
+            \item Note that 
+            \[ a \ast \qty(b \ast c) = a \ast \qty(b + c + 2) = a  + \qty(b + c + 2) + 2  = a + b + c +4 \]
+            and 
+            \[ \qty(a \ast b) \ast c = \qty(a + b + 2) \ast c = a + b + 2 + c + 2 = a + b + c + 4 \]
+            Therefore, $a \ast \qty(b \ast c) = \qty(a \ast b) \ast c$
+            \item $-2 \in \Z, \forall a \in \Z$ 
+            \[ a \ast -2 = a + \qty(-2) + 2 = a = -2 + a + 2 = -2 \ast a \]
+            Therefore, $e = -2$
+            \item $\forall a \in \Z$,
+            \[ a \ast \qty(-4 -a ) = a + \qty(-4 -a) + 2 = -2 = -4 -a  + a + 2 = \qty(-4-a) \ast a \]
+            Take $a^{-1} = -4 - a \in \Z$.
+        \end{enumerate}
+    \end{myspace}
+    Moreover, $\ast$ is commutative: $\forall a, b \in \Z$
+    \[ a \ast b = a + b + 2 = b + a + 2 = b \ast a \]
+    Thus, $\langle \Z, \ast \rangle$ is an abelian group.
+\end{solution}
+
+\begin{exercise}
+    Let $X$ be a non-empty set and $G = \qty{f \mid f: X \to X}$ ($f$ is a function on $X$). Consider $\langle G, \circ \rangle$, where $\circ$ is function composition.
+\end{exercise}
+
+\begin{solution}
+    Let $f_1, f_2 \in G$. Then $f_1 \circ f_2: X \to X$ where $x \mapsto f_1\qty(f_2\qty(x)) = \qty(f_1 \circ f_2)(x)$. \\
+    Let $f, g, h \in G$.
+    \begin{myspace}
+        \begin{enumerate}[label=\textbf{(G\arabic*)}]
+            \item Let $x \in X$
+            \begin{align*}
+                \qty[f \circ \qty(g \circ h)] \qty(x) = f\qty(\qty(g \circ h)\qty(x)) &= f\qty(g\qty(h(x))) \\
+                &= \qty(f \circ g)\qty(h(x)) \\
+                &= \qty[\qty(f \circ g) \circ h]\qty(x)
+            \end{align*}
+            
+            Therefore, $f \circ \qty(g \circ h) = \qty(f \circ g) \circ h$
+            \item $\forall x \in X$, 
+            \[ \qty(f \circ \text{ id}(x)) = f\qty(\text{id}(x)) = f(x) = \text{ id}(f(x)) = \qty(\text{id} \circ f)(x) \]
+            Therefore, $f \circ \text{ id} = f = \text{ id} \circ f$
+            \item $f$ might not have an inverse unless $f$ is bijective. Moreover, $\circ$ is not always commutative. So $\langle G, \circ \rangle$ is a monoid. 
+        \end{enumerate}
+    \end{myspace}
+\end{solution}
+
+\begin{definition}[Euler's phi function]
+    Let $n \in \Z^+$. The \textbf{Euler's phi function (or Euler's totient function)} $\phi(n)$ counts the positive intergers less than or equal to $n$ that are relatively prime to $n$. 
+\end{definition}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item Observe that $\phi(1) = 1$ and $\qty|U(\Z_n)| = \phi(n)$
+        \item Let $p$ be prime. Note that $\phi(p) = p - 1$. Moreover, if $k \geq 1$, then $\phi(p^k) = p^k - p^{k-1}$ 
+        \item If gcd$(m,n) = 1$, then $\phi(mn) = \phi(m) \phi(n)$
+        \item If $a^{-1}, b^{-1} \in G$ are inverses of $a, b \in G$, then 
+        \begin{enumerate}[a.]
+            \item $\qty(a^{-1})^{-1} = a$
+            \item $\qty(a \ast b)^{-1} = b^{-1} \ast a^{-1}$ (socks-shoes property)
+        \end{enumerate}
+        \item The linear equations $a \ast x = b$ and $y \ast c = d$ have unique solutions $x$ and $y$ in $G$ given respectively by $x = a^{-1} \ast b$ and $y = d \ast c^{-1}$
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Let $\langle G, \ast \rangle$  be a group and $a, b, c \in G$.
+    \begin{enumerate}[i.]
+        \item The identity element is unique
+        \item The left and right cancellation laws hold, that is, $a \ast b = a \ast c$ implies $b = c$ and $b \ast a = c \ast a$ implies $b = c$
+        \item For each $a \in G$, the inverse of $a$ is unique
+    \end{enumerate}
+\end{theorem}
+
+\begin{center}
+    \begin{tabular}{c c c}
+         & Multiplicative Notation & Additive Notation \\
+         operation: & $ab$ & $a+b$ \\
+         identity: & $e$ or $1$ & 0 \\
+         inverse: & $a^{-1}$ & $-a$ \\
+         exponents: & $a^n = \underbrace{a \cdot a \cdot \dotsb a}_{n \text{ factors}}$ & $na = \underbrace{a + a + \dotsc a}_{n \text{ addends}}$ \\
+         & $\qty(a^m)^n = a^{mn} = a^{nm}$ & $n\qty(ma) = \qty(nm)a = (mn)a$ \\
+         & $a^m \cdot a^n = a^{m+n}$ & $ma + na = \qty(m+n)a$ \\
+         & $a^{-n} = \qty(a^n)^{-1} = \qty(a^{-1})^n$ & $\qty(-n)a = - \qty(na) = n \qty(-a)$ \\
+         & $a^0 = e$ & $0a = 0$ \\
+         & $a^1 = a$ & $1a = a$
+    \end{tabular}
+\end{center}
+
+\begin{exercise}
+    Complete the following Cayley table for the group $\langle \qty{e, a, b, c, d, \ast \rangle}$.
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|}
+             \hline
+             $\ast$ & $e$ & $a$ & $b$ & $c$ & $d$ \\
+             \hline 
+             $e$ & $e$ &  &  &  & \\
+             \hline 
+             $a$ &  & $b$ &  &  & $e$ \\
+             \hline 
+             $b$ &  & $c$ & $d$ & $e$ &  \\
+             \hline 
+             $c$ &  & $d$ & & $a$ & $b$ \\
+             \hline 
+             $d$ &  &  &  & &  \\
+             \hline
+        \end{tabular}
+    \end{center}
+
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|}
+             \hline
+             $\ast$ & $e$ & $a$ & $b$ & $c$ & $d$ \\
+             \hline 
+             $e$ & $e$ & $a$ & $b$ & $c$ & $d$ \\
+             \hline 
+             $a$ & $a$ & $b$ & $c$ & $d$ & $e$ \\
+             \hline 
+             $b$ & $b$ & $c$ & $d$ & $e$ & $a$ \\
+             \hline 
+             $c$ & $c$ & $d$ & $e$ & $a$ & $b$ \\
+             \hline 
+             $d$ & $d$ & $e$ & $a$ & $b$ & $c$ \\
+             \hline
+        \end{tabular}
+    \end{center}
+\end{solution}
+
+\begin{corollary}
+    In a Cayley table of a group, each element appears exactly one in each row and exactly once in each column.
+\end{corollary}
+
+\begin{theorem}
+    Let $G$ be a group. Then $G$ is abelian if and only if $\forall n  \in \Z^+, \forall a, b \in G, \qty(ab)^n= a^nb^n$
+\end{theorem}
+
+\begin{proof} \phantom{blank} \\
+    $\qty(\Rightarrow)$ By induction, \\
+    Base case: If $n = 1$,
+    \[ ab = \qty(ab)^1 = a^1b^1 = ab \]
+    Assume that $n = k$ such that $\qty(ab)^k = a^kb^k$. This holds when $k \in \Z^+$. Then
+    \[ \qty(ab)^{k+1} = \qty(ab)^k \qty(ab) = a^kb^k ab = a^kab^kb = a^{k+1}b^{k+1} \]
+     Therefore, $\qty(ab)^n = a^nb^n \, \forall n \in \Z^+, \forall a, b \in G$. \qedsymbol \\
+    $\qty(\Leftarrow)$ Suppose $G$ is a group $\land \forall n \in \Z^+, \forall a, b \in G, \qty(ab)^n = a^nb^n$. In particular, for $n = 2$,
+    \begin{align*}
+        \qty(ab)^2 &= a^2b^2 \\
+        \qty(ab) \qty(ab) &= aabb \\
+        a \qty(ba) b &= aabb \\
+        ba &= ab \hspace{2em} \text{( by LCL and RCL)}
+    \end{align*}
+\end{proof}
+
+\begin{definition}[Order of an Element]
+    The \textbf{order of an element} $g$ in group $G$, denoted by $\qty|g|$ or ord$\qty(g)$, is the smallest positive integer $n$ such that $g^n = e$ (in additive notation, this would be $ng = 0$). If no such integer exists, we say that $g$ has \textbf{infinite order} (that is, $g^n \neq e, \forall n \in \Z^+$).
+\end{definition}
+
+\begin{exercise}
+    Find the order of the following elements of a group.
+    \[ \mqty[0 & -1 \\ 1 & -1], \mqty[1 & 0 \\ 1 & 1] \in GL\qty(2, \R) \]
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{enumerate}
+        \item $\mqty[0 & -1 \\ 1 & -1]^2 = \mqty[0 & -1 \\ 1 & -1] \mqty[0 & -1 \\ 1 & -1] = \mqty[-1 & 1 \\ -1 & 0] \neq \mqty[1 & 0 \\ 0 & 1] = I_2 $ \\
+        $\mqty[0 & -1 \\ 1 & -1]^3 = \mqty[0 & -1 \\ 1 & -1] \mqty[-1 & 1 \\ -1 & 0] = \mqty[1 & 0 \\ 0 & 1] = I_2 \Rightarrow \text{ord}\qty(\mqty[0 & -1 \\ 1 & -1]) = 3$
+        \item $\mqty[1 & 0 \\ 1 & 1] \mqty[1 & 0 \\ 1 & 1] = \mqty[1 & 0 \\ 2 & 1] = \mqty[1 & 0 \\ 1 & 1]^2$ \\
+        $\mqty[1 & 0 \\ 1 & 1] \mqty[1 & 0 \\ 2 & 1] = \mqty[1 & 0 \\ 3 & 1] = \mqty[1 & 0 \\ 1 & 1]^3$ \\
+        
+        Claim: $\forall n \in \Z^+$
+        \[ \mqty[1 & 0 \\ 1 & 1]^n = \mqty[1 & 0 \\ n & 1] \]
+        Proof: Base Case. If $n = 1$,
+        \[ \mqty[1 & 0 \\ 1 & 1]^1 = \mqty[1 & 0 \\ 1 & 1] \]
+        Assume that $\mqty[1 & 0 \\ 1 & 1]^k = \mqty[1 & 0 \\ k & 1]$ is true for $k \geq 1$. Therefore,
+        \[ \mqty[1 & 0 \\ 1 & 1]^{k+1} = \mqty[1 & 0 \\ 1 & 1 ]^k \mqty[1 & 0 \\ 1 & 1] = \mqty[1 & 0 \\ k & 1] \mqty[1 & 0 \\ 1 & 1] = \mqty[1 & 0 \\ k + 1 & 1]\]
+        Thus, $\forall n \in \Z^+ \mqty[1 & 0 \\ 1 & 1]^n = \mqty[1 & 0 \\ n & 1]$. The order of $\mqty[1 & 0 \\ 1 & 1]$ is infinite.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Complete the order of the following elements.
+    \[ \mqty[2 & 0 & 0 \\ 4 & 0 & 0], \mqty[0 & 1 & 0 \\ 2 & 0 & 3] \in M_{2 \cross 3} \qty(\Z_6) \]
+\end{exercise}
+
+\begin{solution}
+    In additive notation, find least $n \in \Z^+$
+    \begin{enumerate}
+        \item $n \mqty[2 & 0 & 0 \\ 4 & 0 & 0] = \mqty[n2 & 0 & 0 \\ n4 & 0 & 0] = 0_{2 \cross 3} \in M_{2 \cross 3} \qty(\Z_6)$. Thus, $n = 3$.
+        \item $n \mqty[0 & 1 & 0 \\ 2 & 0 & 3] = \mqty[0 & n & 0 \\ n2 & 0 & n3] = 0_{2 \cross 3}$. Thus, $n = 6$.
+    \end{enumerate}
+\end{solution}

@@ -1,0 +1,185 @@
+\subsection{Friday, November 25: Fields and Integral Domains}
+
+\subsubsection{Fields}
+
+\begin{definition}[Fields]
+    Let $R$ be a ring with unity $1_R \neq 0_R$. If every nonzero element of $R$ is a unit, then $R$ is called a \textbf{division ring} or a \textbf{skew field}. If $R$ is a commutative division ring, then $R$ is said to be a \textbf{field}. A noncommutative division ring is called a \textbf{strictly skew field}.
+\end{definition}
+
+\begin{remark}
+    The ring $R$ is a division ring if and only if $R^{\ast} = R \setminus \qty{0_R}$ is a group under multiplication. The ring $R$ is a field if and only if $R^{\ast} = R \setminus \qty{0_R}$ is an abelian group under multiplication.
+\end{remark}
+
+\begin{exercise}
+    Let $2\Z_{10} = \qty{0, 2, 4, 6, 8}$ under addition and multiplication modulo 10. Prove that $R$ is a field
+\end{exercise}
+
+\begin{solution} By the Cayley tables, we have
+
+\begin{center}
+    \begin{multicols}{2}
+        \begin{tabular}{c | c c c c c}
+             $+_{10}$ & 0 & 2 & 4 & 6 & 8  \\
+             \hline
+             0 & 0 & 2 & 4 & 6 & 8 \\
+             2 & 2 & 4 & 6 & 8 & 0 \\
+             4 & 4 & 6 & 8 & 0 & 2 \\
+             6 & 6 & 8 & 0 & 2 & 4 \\
+             8 & 8 & 0 & 2 & 4 & 6 \\
+        \end{tabular}
+        
+        \columnbreak
+        
+        \begin{tabular}{c | c c c c c}
+             ${\cdot}_{10}$ & 0 & 2 & 4 & 6 & 8  \\
+             \hline
+             0 & 0 & 0 & 0 & 0 & 0 \\
+             2 & 0 & 4 & 8 & 2 & 6 \\
+             4 & 0 & 8 & 6 & 4 & 2 \\
+             6 & 0 & 2 & 4 & 6 & 8 \\
+             8 & 0 & 6 & 2 & 8 & 4 \\
+        \end{tabular}
+    \end{multicols}
+\end{center}
+
+Note that $\langle \Z_n, +_n, \cdot_n \rangle$ is a commutative ring with unity, so $+_n$ and $\cdot_n$ are well-defined, associative, commutative, and satisfies distributive laws. Note that $2\Z_{10} \subseteq \Z_{10}$. \\
+
+Caylet table shows that $2\Z_{10}$ is closed under $+_{10}$ and $\cdot_{10}$. So $+_{10}$ and $\cdot_{10}$ are binary operations on $2\Z_{10}$. The additive identity under addition is given by $0_{2\Z_{10}} = 0$ and for each element, $-0 = 0, -2 = 8, -4 = 6, -6 = 4, -8 = 2$. Thus, the additive inverses are also in $2\Z_{10}$. Therefore, $\langle 2\Z_{10}, +_{10}, \cdot_{10} \rangle$ is a commutative ring. \\
+
+Note that the identity element under multiplication is $1_{2\Z_{10}} = 6$. And for each element, $2^{-1} = 8, 4^{-1} = 4, 6^{-1} = 6, 8^{-1} = 2$. Since $\langle 2\Z_{10}, +_{10}, \cdot_{10} \rangle$ is a commutative ring with unity and all nonzero elements are units, $\langle 2\Z_{10}, +_{10}, \cdot_{10} \rangle$ is a field. \qedsymbol
+\end{solution}
+
+\begin{remark}
+    The quaternions $\mathds{H}$ of Sir Williman Rowan Hamilton, (1805 - 1865) are the standard example of a strictly skew field or noncommutative division ring.
+\end{remark}
+
+\begin{definition}
+    A nonzero element $a$ in a ring $R$ is a \textbf{divisor of zero} or $\textbf{zero divisor}$ if there exists a nonzero element $b$ in $R$ such that $ab = 0_R$ or $ba = 0_R$.
+\end{definition}
+
+\begin{theorem}
+    The cancellation laws for multilication hold in a ring $R$ if and only if $R$ has no zero divisors.
+\end{theorem}
+
+\begin{remark} Suppose $R$ be a ring without zero divisors. Let  $a, b \in R$ with $a \neq 0_R$.
+    
+    \begin{enumerate}
+        \item Then $ax = b$, has at most one solution in $R$.
+        \item If $R$ is a ring with unity and $a$ is a unit, then $ax = b$ has a unique solution $x = a^{-1}b$. In the case that $R$ is a commutative, in particular if $R$ is a field, it is customary to write $a^{-1}b = ba^{-1}$ by $\frac{b}{a}$. This quotient notation must \textbf{not be used if $R$ is not commutative}, for then we do not know whether $\frac{b}{a}$ denotes $a^{-1}b$ or $ba^{-1}$.
+    \end{enumerate}
+\end{remark}
+
+\subsubsection{Integral Domain}
+
+\begin{definition}[Integral Domain]
+    A commutative ring with unity $D$ with $1_D \neq 0_D$ is said to be an \textbf{integral domain} if it has no zero divisors.
+\end{definition}
+
+\begin{remark}
+    In an integral domain $D$, $\forall a, b \in D$, if $ab = 0_D$, then $a = 0_D$ or $b = 0_D$.
+\end{remark}
+
+\begin{theorem}
+    Every field is an integral domain.
+\end{theorem}
+
+\begin{theorem}
+    Every finite integral domain is a field.
+\end{theorem}
+
+\begin{definition}
+    A subring $S$ of a field $R$ is said to be a \textbf{subfield} of $R$ if $S$ is also a field under the same binary operations in $R$. A subring $S$ of an integral domain $R$ is said to be a \textbf{subdomain} of $R$ if $S$ is  also an integral domain under the same binary operations in $R$.
+\end{definition}
+
+\begin{theorem}[Subfield Test]
+    Let $F$ be a field and $K \subseteq F$ with at least two elements. If $\forall a, b \, (b \neq 0_F) \in K$, $a - b \in K$ and $ab^{-1} \in K$, then $K$ is a subfield of $F$.
+\end{theorem}
+
+\begin{exercise}
+    Consider the set $2\Z$ under the usual addition. Define a multilication $\ast$ by $a \ast b = \qty(ab)/2$, for all $a, b \in 2\Z$.
+    \begin{enumerate}
+        \item Show that $2\Z$ with the defined operations is a commutative ring with unity
+        \item Is $\langle 2\Z, +, \ast \rangle$ an integral domain? Justify your answer
+        \item Is $\langle 2\Z, +, \ast \rangle$ a field? Justify your answer
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{enumerate}
+        \item Note that $\langle m\Z, + \rangle$ is an abelian group, $m \in \Z$. We will show that $2\Z$ is closed under $\ast$. Let $2k_1, 2k_2 \in 2\Z$ where $k_1, k_2 \in \Z$. Then
+        \[ (2k_1) \ast (2k_2) = \frac{(2k_1)(2k_2)}{2} = 2(k_1k_2) \in 2\Z \hspace{1em} (\text{where } k_1k_2 \in \Z) \]
+        Next,we will show that $\ast$ is well-defined on $2\Z$. Let $a, b, c, d \in 2\Z$ where $a = b$ and $c = d$. Then, we have
+        \[ a \ast c = \frac{ac}{2} = \frac{bd}{2} = b \ast d \]
+        Therefore, $\ast$ is a binary operation on $2\Z$. We prove its associativity, $\forall a, b, c \in 2\Z$, 
+        \[ (a \ast b) \ast c = \frac{ab}{2} \ast c = \frac{\frac{ab}{2} c}{2} = \frac{(ab)c}{2 \cdot 2} = \frac{a (bc)}{2} = \frac{a \frac{bc}{2}}{2} = \frac{a (b \ast c)}{2} = a \ast \qty(b \ast c)  \]
+        We verify its RDL and LDL,  $\forall a, b, c \in 2\Z$, 
+        \[ (a + b) \ast c = \frac{(a + b)c}{2} = \frac{ac + bc}{2} = \frac{ac}{2} + \frac{bc}{2} = (a \ast c) + (b \ast c) \]
+        and 
+        \[ a \ast (b + c) = \frac{a(b + c)}{2} = \frac{ab + ac}{2} = \frac{ab}{2} + \frac{ac}{2} = (a \ast b) + (a \ast c) \]
+        So, LDL and RDL holds. Lastly, let $a \in 2\Z$. Then,
+        \[2 \ast a = a \ast 2 = \frac{a \cdot 2}{2} = a \]
+        So we take, $1_{2\Z} = 2 \in 2\Z$. Therefore, $\langle 2\Z, +, \ast \rangle$ is a commutative ring with unity.
+        
+        \item Let $a, b \in 2\Z$ and suppose $a \ast b = 0_{2\Z}$. Then 
+        \[ \frac{ab}{2} = a \ast b = 0_{2\Z} = 0 \]
+        So $ab = 0$. This implies that $a = 0$ or $b = 0$. Therefore, $\langle 2\Z, +, \ast \rangle$ is an integral domain.
+        
+        \item Let $a = 4 \in 2\Z^{\ast}$, then 
+        \[ 1 \ast 4 = 4 \ast 1 = \frac{4 \cdot 1}{2} = 2 = 1_{2\Z} \]
+        but $1 \notin 2\Z^{\ast}$. Therefore, $\langle 2\Z^{\ast}, \ast \rangle$ is not an abelian group. So it is not a field.
+    \end{enumerate}
+\end{solution}
+
+\begin{definition}[Characteristic]
+    Let $R$ be a ring. If there is a positive integer $n$ such that $n \cdot a = 0_R$, for every $a \in R$, where $n \cdot a = a + a + \cdots + a$ ($n$ addends), then the smallest such $n$ is called the \textbf{characteristic} of $R$. If no such positive integer exists, we say that $R$ has \textbf{characteristic 0}. Notation: char$R = n$.
+\end{definition}
+
+
+\begin{theorem}
+    Let $R$ be a ring with unity $1_R$. If $1_R$ has finite order $n$, then char$R = n$. If $n \cdot 1_R \neq 0_R$ for all $n \in \Z^+$ ($1_R$ has infinite order), then $R$ has characteristic $0$.  
+\end{theorem}
+
+\begin{theorem}
+    The characteristic of an integral domain is either zero or a prime integer.
+\end{theorem}
+
+\begin{exercise}
+    Compute the characteristic of the following rings.
+    \begin{enumerate}[a.]
+        \item $X = \varnothing$, $\langle \mathcal{P}(X), \triangle, \cap \rangle$
+        \item $\Z_5 \times 5\Z$
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank}
+    \begin{enumerate}
+        \item Note that $0_{\mathcal{P}(X)} = \varnothing$. Then, $\forall A \in \mathcal{P}(X)$,
+        \[ 2A = A \triangle A = (A \cup A) / (A \cap A) = A / A = \varnothing \]
+        Therefore, char$\mathcal{P}(X) = 2$.
+        
+        \item Note that $0_{\Z_5 \times 5\Z} = (0, 0)$. Also, char$\Z_5 = 5$ but char$5\Z$ = 0. Therefore, char($\Z_5 \times 5\Z$) = 0.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    A ring element $a$ is called an \textbf{idempotent} if $a^2 = a$. In a commutative ring of characteristic 2, prove that the idempotents form a subring.
+\end{exercise}
+
+\begin{proof}
+    Let $R$ be a commutative ring, $S= \qty{a \in R \mid a^2 = a}$, and char$R = 2$. Then, $\forall a \in S, a^2 = a \cdot a$ and $\forall x \in R, 2x = x + x = 0_R \Rightarrow x = -x$. Note that 
+        \[ 0_R^2 = 0_R \cdot 0_R \Rightarrow 0_R \in S \neq \varnothing \]
+    Let $a,  b \in S$. Then
+    \begin{align*}
+        (a - b)^2 = (a - b)(a - b) &= a^2 + a(-b) + (-b)a + (-b)(-b) \\
+        &= a^2 - ab - ba + b^2 \\
+        &= a^2 - ab - ab + b^2 \\
+        &= a^2 + 2(-ab) + b^2 \\
+        &= a^2 + b^2 \\
+        &= a + b \\
+        &= a + (-b) \\
+        &= a - b
+    \end{align*}
+    Therefore, $a - b \in S$. Moreover, 
+    \[ (ab)^2 = a^2b^2 = ab \]
+    So, $ab \in S$. Therefore, $S \leq R$. \qedsymbol
+\end{proof}

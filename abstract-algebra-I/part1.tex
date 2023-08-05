@@ -1,0 +1,206 @@
+\subsection{Friday, September 9: Division Algorithm and Modular
+Arithmetic}
+
+\subsubsection{Division Algorithm}
+
+\begin{definition}[Division Algorithm]
+    Let $m, n \in \Z$ with $n > 0$. Then $\exists! \; q, r \in \Z$ such that $m = nq + r$ where $0 \leq r < n$ ($m$ div $n = q$ and $m$ mod $n$ = $r$) 
+\end{definition}
+
+\begin{remark}
+    We call $q$ the \textbf{quotient} and $r$ the \textbf{remainder}.
+\end{remark}
+
+\begin{exercise}[Prove: Extended Division Algorithm]
+    Let $m, n \in \Z$ with $n \neq 0$. Then $\exists! \; q, r \in \Z$ such that $m = nq + r$, where $0 \leq r < \qty|n|$.
+\end{exercise}
+
+\begin{proof}
+    Let $m, n \in \Z$ with $n \neq 0$. By the Division Algorithm on $\Z$ applied to $m$  and $\qty|n| \in \Z^+, \exists! \; q, r \in \Z$ such that $m = \qty|n|q + r$ with $0 \leq r < \qty|n|$.
+    \begin{myspace}
+        \begin{enumerate}[label=\textbf{Case \arabic*:}]
+            \item If $n > 0$ \\
+            If $n > 0$, then $\qty|n| = n$. Hence $\exists! \; q, r \in \Z$ such that
+            \[ m = \qty|n|q + r = nq + r, \text{ with } 0 \leq r < \qty|n| \]
+            \item If $n < 0$ \\
+            If $n < 0$, then $\qty|n| = -n$. Hence $\exists! \; -q, r \in \Z$ such that  
+            \[ m = \qty|n|q + r = -nq + r = n \qty(-q) + r \]
+            Since $q \in \Z$ and is uniquely determined, then so is $-q$.
+        \end{enumerate}
+    \end{myspace}
+\end{proof}
+
+
+\begin{definition}
+    Let $m, n \in \Z$ with $n \neq 0$.
+    \[ n \text{ divides } m (\text{notation: } n \mid  m) \Leftrightarrow m = nk \]
+    for some $k \in \Z$.
+\end{definition}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item For every nonzero integer $a$, $a \mid 0$, and for every integer $b$, $1 \mid b$.
+        \item For $a \in \Z$, $a$ and $-a$ have the same divisors.
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Let $n$ be a fixed positive integer and $a, b \in \Z$.
+    \[ a \equiv b \pmod{n} \Leftrightarrow n \mid \qty(a - b) \Leftrightarrow a \bmod{n} = b \bmod{n} \]
+\end{definition}
+
+\begin{definition}[Greatest Common Divisor]
+    Let $a, b$ be integers not both zero. A positive integer $d$ is called the \textbf{greatest common divisor} (gcd(a, b) = d) of $a$ and $b$ if
+    \vspace{1em}
+    \begin{enumerate}
+        \item $d \mid a$ and $d \mid b$, that is, $d$ is a common divisor of $a$ and $b$
+        \item $\forall c \in \Z$, if $c \mid a$ and $c \mid b$, then $c \mid d$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Least Common Multiple]
+    Let $a, b \in \Z^+$ and $m$ be a positive integer. Then $m$ is the \textbf{least common multiple} (lcm(a, b) = m) of $a$ and $b$ if $m$ satisfies the following:
+    \vspace{1em}
+    \begin{enumerate}
+        \item $a \mid m$ and $b \mid m$, that is $m$ is a multiple of both $a$ and $b$;
+        \item $\forall c \in \Z$, if $a \mid c$ and $b \mid c$, then $m \mid c$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Bézout's Identity]
+   Let $a, b$ be integers, not both zero, and gcd($a, b$) $= d$. Then $\exists u, v \in \Z$ such that $d = au + bv$.
+\end{theorem}
+
+
+\begin{theorem}
+    \label{theorem112}
+    If $a, b, u, v \in \Z$, where $a$ and $b$ are not both zero, such that $au + bv = 1$, then gcd($a, b$) = 1.
+\end{theorem}
+
+
+\begin{exercise}[Prove]
+    If $a$ and $b$ are relatively prime, $c \in \Z$ and $a \mid bc$, then $a \mid c$.
+\end{exercise}
+
+\begin{proof}
+    Since $a$ and $b$ are relatively prime, let gcd$(a, b) = 1, c \in \Z$ and $a \mid bc$. Thus, Theorem \ref{theorem112} implies that $1 = au + bv \; \exists \, u, v \in \Z$ and $bc = ak \; \exists \; k \in \Z$. Therefore, multiplying by $c$, we get $c = c \qty(au + bv) = cau + bcv = cau + akv = a \qty(cu + kv)$ where $c, u, k, v \in \Z$. Therefore, $a \mid c$. \qedsymbol
+\end{proof}
+
+\begin{theorem}[Euclid's Lemma]
+    Let $a, b \in \Z$. If $p$ is a prime and $p \mid ab$, then either $p \mid a$ or $p \mid b$.
+\end{theorem}
+
+
+
+\begin{exercise}[Prove]
+    Let $a, b$ be nonzero integers and $c \in \Z$. Suppose $a \mid c$ and $b \mid c$ and gcd$(a, b) = d$. Then $ac \mid cd$.
+\end{exercise}
+
+\begin{proof}
+    Suppose $c = ak_1 \land c = bk_2$ for some $k_1, k_2 \in \Z$ and $d = au + bv$ for some $u, v \in \Z$ (by Bézout's identity). Thus, multiplying by $c$, $cd = c \qty(au + bv) = cau + cbv = \qty(bk_2)qu + \qty(ak_1)bv = ab \underbrace{\qty(k_2u + k_1v)}_{\in \Z}$ where $k_2u + k_1v \in \Z$. Therefore, $ab \mid cd$. \qedsymbol
+\end{proof}
+
+\begin{theorem}
+    If $a, b \in \Z^+$, then lcm($a, b$) $= \frac{ab}{\text{gcd}(a, b)}$
+\end{theorem}
+
+\subsubsection{Equivalence Relation}
+
+\begin{definition}[Relation]
+    A \textbf{relation} $R$ between sets $A$ and $B$ is any subset $R \subseteq A \cross B$. A relation $R$ on a set $A$ is a subset of $A \cross A$.
+\end{definition}
+
+\begin{definition}[Equivalence Relation]
+    An \textbf{equivalence relation} $E$ on a set $A$ is a relation on $A$ such that the following are satisfied for all $x, y, z \in A$:
+    \begin{enumerate}
+        \item (\textbf{reflexive}) $(x, x) \in E$;
+        \item (\textbf{symmetric}) $(x, y) \in E \Rightarrow (y, x) \in E$;
+        \item (\textbf{transitive}) $(x, y) \in E$ and $(y, z) \in E \Rightarrow (x, z) \in E$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Equivalence Class]
+    Let $E$ be an equivalence relation on $A$ and let $a \in A$. Consider the set 
+    \[ \qty[a]_{E} = \qty{x \in A \mid \qty(x, a) \in E}\]
+    The set $\qty[a]_{E}$ is called the \textbf{equivalence class} of $a$ with respect to $E$ and $a$ is called a \textbf{representative} of this class. We often denote by $A/E$ the set of the equivalence classes with respect to $E$.
+\end{definition}
+
+\begin{remark} \phantom{blank}
+    \begin{enumerate}
+        \item The relation congruence modulo $n$ is an equivalence relation on the set of integers.
+        \item If $ a \equiv b \pmod{n}$ and $c \equiv \pmod{n}$, then
+        \begin{enumerate}[(a)]
+            \item $a + c \equiv b + d \pmod{n}$
+            \item $ac \equiv bd \pmod{n}$
+        \end{enumerate}
+    \end{enumerate}
+\end{remark}
+
+
+\begin{exercise}
+    Consider the relation $\sim$ on $\Z$ defined as follows: 
+    \[ a \sim b \text{ iff } 5 \mid \qty(a - b) \]
+    \begin{enumerate}[a.]
+        \item Show that $\sim$ is an equivalence relation on $\Z$.
+        \item Describe the equivalence classes of $\Z$ with respect to $\sim$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank} \\
+\begin{enumerate}[a.]
+    \item We show that $\sim$ is an equivalence relation on $\Z$. \\
+        \begin{enumerate}[i.]
+            \item (\textbf{reflexive}) Let $a \in \Z$
+            \[ 5 \mid 0 = (a - a) \Rightarrow a \sim a \] 
+            \item (\textbf{symmetric}) Let $a ,b \in \Z$. Suppose $a \sim b \Leftrightarrow 5 \mid (a - b)$. Then, there exists $k \in Z$ such that $a - b = 5k$. 
+            \[ \Rightarrow - \qty(b - a) = 5k \Rightarrow b - a = 5 \qty(-k) \text{ where } (-k) \in \Z \Rightarrow 5 \mid \qty(b - a) \Rightarrow b \sim a \]
+            \item (\textbf{transitive}) Let $a, b, c \in \Z$. Suppose $a \sim b \land b \sim c$. Thus $5 \mid (a - b)$ and $5 \mid (b - c)$. These imply that $a - b = 5k_1$ and $b - c = 5k_2$ for some $k_1, k_2 \in \Z$. Then $(a - b) + (b -c) = 5k_1 + 5k_2 \Rightarrow a - c = 5 (k_1 + k_2)$ where $k_1 + k_2 \in \Z$. Thus, $5 \mid \qty(a -c) \Rightarrow a \sim c$.
+        \end{enumerate}
+    \item Let $a \in \Z$. Then,
+        \begin{align*}
+            \qty[a]_{\sim} &= \qty{x \in \Z \mid x \sim a} = \qty{x \in \Z \mid 5 \mid \qty(x - a)} \\
+            &= \qty{x \in \Z \mid x - a = 5k \; \exists \; k \in \Z} = \qty{x \in \Z \mid x = a + 5k, \exists \; k \in \Z} \\
+            &= \qty{a + 5k \mid k \in \Z} 
+        \end{align*}
+        \[ \Z /_{\sim} = \qty{\qty[0]_{\sim}, \qty[1]_{\sim}, \qty[2]_{\sim}, \qty[3]_{\sim}, \qty[4]_{\sim}} \]
+\end{enumerate}
+    
+    For the second part:
+    
+
+\end{solution}
+
+\begin{exercise}
+    Let $A = \R$. Consider the relation $\sim$ on $A$ defined as follows:
+    \[ a \sim b \text{ iff } ab > 0 \]
+    \begin{enumerate}
+        \item Show that $\sim$ is not an equivalence relation on $\R$
+        \item Is $\sim$ an equivalence relation on $\R/\qty{0}$? Justify your answer.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution} \phantom{blank} \\
+\begin{enumerate}
+    \item Note that $0 \in \R$ and $0 \cdot 0 = 0 \ngtr 0 \; \qty(0 \nsim 0)$, so $\sim$ is not reflexive. Since $\sim$ is not reflexive, it is not an equivalence relation.
+    \item Second part:
+    
+    \begin{enumerate}[i.]
+        \item (reflexive) Let $a \in \R^*$. We have $a \cdot a = a^2 > 0$. Therefore, $a \sim a$.
+        \item (symmetric) Let $a, b \in \R^*$ and $a \sim b \Rightarrow ab > 0$. Then $ba = ab > 0$. Therefore, $b \sim a$.
+        \item (transitive) Let $a, b, c \in \R^*$ and $a \sim b \land b \sim c$. Hence, $ab > 0$ and $bc > 0$. Therefore, their product is $\qty(ab)\qty(bc) < 0 \Rightarrow ab^2c > 0 \Rightarrow \frac{1}{b^2} \qty(ab^2c) > \frac{1}{b^2} \cdot 0 \Rightarrow ac > 0 \Rightarrow a \sim c$ 
+    \end{enumerate}
+\end{enumerate}
+
+    Therefore,
+    
+    $\qty[1]_{\sim} = \qty{x \in \R^* \mid x \sim 1} = \qty{x \in \R^* \mid x = x \cdot 1 > 0}  = \qty(0, +\infty)$
+    
+    $\qty[-1]_{\sim} = \qty{x \in \R^* \mid x \sim -1} = \qty{x \in \R^* \mid -x = x \qty(-1) > 0} = \qty{x \in \R^* \mid x < 0} = \qty(- \infty, 0) $
+    
+    $\R^*/_{\sim} = \qty{\qty[1]_{\sim}, \qty[-1]_{\sim}}$
+\end{solution}
+
+
+\begin{theorem}
+    Let $n$ be a fixed positive integer and $a, b \in \Z$. Then $a \bmod{n} = b \bmod{n}$ if and only if $a \equiv b \pmod{n}$.
+\end{theorem}
